@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production & Build Outputs
+dist/
+dist-electron/
+build/
+bin/
+obj/
+
+# Logs & Temporary Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+
+# Editor & OS Metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Valheim Character & World Saves (Safety: never commit personal saves)
+*.fch
+*.fch.old
+*.fch.bak
+*.safety_backup.fch
+*.fwl
+*.db
+*.db.old
+
+# Temporary / Scratch blueprints & raw dumps
+*.vbuild
+*.blueprint
+scratch/
+test_icons/
+extracted_icons/
+valheim_icons/
+valheim_ui/
+
+# Python Cache & Envs
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+scripts/__pycache__/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local

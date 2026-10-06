@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valheim 1.0 Meta Progression & Biome Crafting BOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nordic: {
+                            bg: '#0b1120',
+                            card: '#1e293b',
+                            cardBorder: '#334155',
+                            frost: '#38bdf8',
+                            frostDark: '#0284c7',
+                            gold: '#f59e0b',
+                            goldHover: '#d97706',
+                            ember: '#ef4444',
+                            eitr: '#8b5cf6',
+                            emerald: '#10b981'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1120;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<body class="bg-nordic-bg text-slate-100 font-sans antialiased selection:bg-nordic-frost selection:text-slate-900 min-h-screen flex flex-col">
+
+    <nav class="sticky top-0 z-50 bg-nordic-bg/90 backdrop-blur-md border-b border-nordic-cardBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">⚡</span>
+                    <span class="font-extrabold text-lg sm:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-nordic-frost via-nordic-gold to-nordic-ember">
+                        VALHEIM 1.0 META ARCHITECTURE
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-4 text-xs font-semibold overflow-x-auto">
+                    <a href="#kpi-summary" class="hover:text-nordic-frost transition-colors whitespace-nowrap">KPIs</a>
+                    <a href="#biome-bom-hub" class="hover:text-nordic-frost transition-colors whitespace-nowrap">BOM Hub</a>
+                    <a href="#endgame-builds" class="hover:text-nordic-gold transition-colors whitespace-nowrap text-nordic-gold font-bold">Loadouts</a>
+                    <a href="#enemy-counter-matrix" class="hover:text-nordic-frost transition-colors whitespace-nowrap text-nordic-frost font-bold">Enemy Counters</a>
+                    <a href="#diet-calculator" class="hover:text-nordic-emerald transition-colors whitespace-nowrap text-nordic-emerald font-bold">Diet Builder</a>
+                    <a href="#progression-roadmap" class="hover:text-amber-400 transition-colors whitespace-nowrap text-amber-400 font-bold">Roadmap</a>
+                    <a href="#crafting-loop" class="hover:text-nordic-frost transition-colors whitespace-nowrap">Crafting Loops</a>
+                    <a href="#armor-analysis" class="hover:text-nordic-frost transition-colors whitespace-nowrap">Armor Curves</a>
+                    <a href="#boss-strategy" class="hover:text-rose-400 transition-colors whitespace-nowrap text-rose-400 font-bold">Boss Tactics</a>
+                    <a href="#forge-simulator" class="hover:text-nordic-ember transition-colors whitespace-nowrap">Forge Sim</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <header class="text-center space-y-4 py-6 border-b border-nordic-cardBorder/50">
+            <div class="inline-flex items-center space-x-2 bg-nordic-frost/10 border border-nordic-frost/30 px-3 py-1 rounded-full text-nordic-frost text-xs font-bold uppercase tracking-wider">
+                <span>Version 1.0 Complete Biome Crafting, BOM & Food Blueprint</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Optimal Crafting Stations, Resource BOM & High-Efficiency Diets
+            </h1>
+            <p class="text-slate-400 max-w-3xl mx-auto text-sm sm:text-base">
+                An itemized breakdown of mandatory crafting infrastructure, optimal gear, total raw material quotas, and low-grind high-yield food setups for every biome tier in Valheim 1.0.
+            </p>
+        </header>
+
+        <section id="kpi-summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-5 shadow-lg flex flex-col justify-between hover:border-nordic-frost/50 transition-all">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Early Metal Efficiency</span>
+                    <span class="text-xl">⛏️</span>
+                </div>
+                <div class="my-3">
+                    <div class="text-2xl font-extrabold text-nordic-frost">33 BRONZE TOTAL</div>
+                    <p class="text-xs text-slate-300 mt-1">Skip Bronze Armor completely. Allocate metal solely to Axe, Cultivator, Pickaxe, and Forge extensions.</p>
+                </div>
+                <div class="text-[11px] text-nordic-emerald font-semibold">✓ Cuts Black Forest mining loop by 65%</div>
+            </div>
+
+            <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-5 shadow-lg flex flex-col justify-between hover:border-nordic-frost/50 transition-all">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Swamp Iron Quota</span>
+                    <span class="text-xl">⛓️</span>
+                </div>
+                <div class="my-3">
+                    <div class="text-2xl font-extrabold text-nordic-gold">130 IRON TARGET</div>
+                    <p class="text-xs text-slate-300 mt-1">Craft Iron Mace, Pickaxe, Forge upgrades, and Banded Shield. Keep Root Harnesk for Pierce mitigation.</p>
+                </div>
+                <div class="text-[11px] text-nordic-gold font-semibold">★ ~4-5 Sunken Crypts required</div>
+            </div>
+
+            <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-5 shadow-lg flex flex-col justify-between hover:border-nordic-frost/50 transition-all">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Mistlands Eitr & Flight</span>
+                    <span class="text-xl">🧪</span>
+                </div>
+                <div class="my-3">
+                    <div class="text-2xl font-extrabold text-nordic-eitr">45 REFINED EITR</div>
+                    <p class="text-xs text-slate-300 mt-1">Minimum requirement for Black Forge, Galdr Table, Feather Cape (fall immunity), and Staff of Protection.</p>
+                </div>
+                <div class="text-[11px] text-nordic-eitr font-semibold">↑ Unlocks Tier 6 Magic & Feather Cape</div>
+            </div>
+
+            <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-5 shadow-lg flex flex-col justify-between hover:border-nordic-frost/50 transition-all">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Ashlands Drakkar & Flametal</span>
+                    <span class="text-xl">🌋</span>
+                </div>
+                <div class="my-3">
+                    <div class="text-2xl font-extrabold text-nordic-ember">80 FLAMETAL & SHIP</div>
+                    <p class="text-xs text-slate-300 mt-1">Mandatory Drakkar ship (30 Ceramic Plates), Shield Generator perimeter, and Lightning Flametal armaments.</p>
+                </div>
+                <div class="text-[11px] text-nordic-ember font-semibold">⚡ Tier 7 Oceanic & Siege Mastery</div>
+            </div>
+        </section>
+
+        <section id="biome-bom-hub" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-nordic-cardBorder pb-4">
+                <div>
+                    <div class="inline-flex items-center space-x-2 text-nordic-frost text-xs font-bold uppercase tracking-wider">
+                        <span>Interactive Resource, Station & Food Directory</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mt-1">Biome Crafting Stations, BOM Quotas & Optimal Food Setup</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Select any biome tab below to inspect every required station, optimal crafting list, raw resource BOM, and the most time-efficient food combination.
+                    </p>
+                </div>
+                <div id="selected-biome-badge" class="self-start md:self-center bg-nordic-frost/10 border border-nordic-frost/30 text-nordic-frost px-3 py-1.5 rounded-lg text-xs font-bold">
+                    Active Biome: Meadows & Black Forest
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pb-2" id="bom-biome-tabs"></div>
+
+            <div id="bom-detail-container" class="space-y-6"></div>
+        </section>
+
+        <section id="resource-chart-section" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                    <span class="text-nordic-gold text-xs font-bold uppercase tracking-wider">Resource Allocation Comparison</span>
+                    <h2 class="text-2xl font-bold text-white mt-1">Primary Metal & Catalyst Requirements per Biome</h2>
+                </div>
+                <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Optimal Meta Path</span>
+            </div>
+            <p class="text-xs text-slate-400">
+                This chart visualizes the total raw primary metals (Copper/Tin, Iron, Silver, Blackmetal, Flametal, Bloodgold) and high-value catalysts required per biome to construct optimal infrastructure and BiS gear.
+            </p>
+            <div class="chart-container">
+                <canvas id="resourceChart"></canvas>
+            </div>
+        </section>
+
+        <section id="armor-analysis" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-nordic-frost text-xs font-bold uppercase tracking-wider">Defensive Architecture</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white">Armor Rating vs Speed Tax</h2>
+                    </div>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded border border-slate-700">Max Tier Values</span>
+                </div>
+                <p class="text-xs text-slate-400">
+                    Heavy metal armor sets impose a cumulative -10% movement penalty across chest and legs, compounding stamina expenditure during exploration and combat rolls. Light/Hybrid sets optimize stamina efficiency.
+                </p>
+                <div class="chart-container">
+                    <canvas id="armorChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-5">
+                <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-5 space-y-3">
+                    <h3 class="text-lg font-bold text-nordic-gold flex items-center space-x-2">
+                        <span>💡</span>
+                        <span>The Efficiency Meta: Armor Skips</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Crafting full heavy metal armor at every biome tier yields steep diminishing returns. Bronze requires extensive terraforming and smelting for minimal protection over Troll Leather.
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        In the Swamp, the <strong class="text-white">Root Harnesk</strong> introduces a passive <span class="text-nordic-gold font-semibold">50% Pierce Reduction</span> calculation. Because pierce damage scales aggressively through Plains Deathsquitos and Mistlands Seekers, retaining the Root Harnesk yields superior survivability without the heavy speed penalty.
+                    </p>
+                    <div class="bg-nordic-ember/10 border border-nordic-ember/40 p-2.5 rounded-lg text-xs text-nordic-ember leading-relaxed">
+                        ⚠️ <strong>LETHAL VULNERABILITY WARNING:</strong> Root Harnesk has a +50% Fire Vulnerability trait (and Feather Cape adds +20%). You <strong>MUST</strong> drink <strong>Fire Resistance Barley Wine</strong> whenever facing Gjall (Mistlands) or stepping foot into Ashlands. Without Fire Wine, Gjall firebombs deal 200+ burning damage and will vaporize you in 2 seconds!
+                    </div>
+                </div>
+
+                <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-5 space-y-3">
+                    <h3 class="text-lg font-bold text-nordic-frost flex items-center space-x-2">
+                        <span>👑</span>
+                        <span>1.0 Endgame Breakpoint</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        In Version 1.0, the <strong class="text-white">Vanguard Set</strong> delivers 102 total armor points alongside net <span class="text-nordic-frost font-semibold">+10% Stamina Regen</span> and <span class="text-nordic-frost font-semibold">-20% Dodge Cost</span>. While the Protector Set offers 132 armor, its severe speed penalty increases vulnerability to high-impact boss attacks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="crafting-loop" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-nordic-cardBorder pb-4">
+                <div>
+                    <span class="text-nordic-eitr text-xs font-bold uppercase tracking-wider">Advanced Metallurgical & Magic Pipelines</span>
+                    <h2 class="text-2xl font-bold text-white mt-1">Biome Industrial Refining Pipelines</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Select a tier to inspect step-by-step extraction loops, refinery radiation shields, and gem socketing mechanics.
+                    </p>
+                </div>
+                <div class="inline-flex rounded-lg border border-nordic-cardBorder p-1 bg-nordic-bg/90 gap-1 self-start md:self-auto" id="crafting-pipeline-tabs"></div>
+            </div>
+
+            <div id="crafting-pipeline-container"></div>
+        </section>
+
+        <section id="endgame-builds" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-nordic-frost text-xs font-bold uppercase tracking-wider">Optimal 1.0 Progression & Meta Configurations</span>
+                    <h2 class="text-2xl font-bold text-white mt-1">Progression Archetype Loadout Matrix</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Select a progression tier and combat archetype to inspect recommended armor allocations, armaments, accessories, diets, and exact crafting next steps.
+                    </p>
+                </div>
+                <div class="inline-flex rounded-lg border border-nordic-cardBorder p-1 bg-nordic-bg/90 gap-1 self-start md:self-auto shrink-0" id="biome-filter-bar"></div>
+            </div>
+
+            <div class="flex flex-wrap gap-2.5 border-b border-nordic-cardBorder pb-3" id="build-tabs"></div>
+            <div id="build-detail-container" class="grid grid-cols-1 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- INTERACTIVE ENEMY WEAKNESS, RESISTANCE & COUNTER MATRIX -->
+        <section id="enemy-counter-matrix" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-nordic-cardBorder pb-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-nordic-frost">Apex Bestiary Intelligence</span>
+                        <span class="text-[10px] bg-nordic-frost/20 text-nordic-frost font-bold px-2 py-0.5 rounded border border-nordic-frost/30">Damage Multipliers & Traps</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mt-1">Enemy Weakness, Resistance & Counter Matrix</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Detailed damage calculations, weakspot mechanics, and gear counter-measures for Mistlands and Ashlands apex predators.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <div class="relative">
+                        <input type="text" id="enemy-search-input" placeholder="Search enemy, damage, or weapon..." 
+                            class="bg-nordic-bg border border-nordic-cardBorder rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-nordic-frost w-full sm:w-64 pl-8" />
+                        <span class="absolute left-2.5 top-2.5 text-xs text-slate-500">🔍</span>
+                    </div>
+                    <div class="inline-flex rounded-lg border border-nordic-cardBorder p-1 bg-nordic-bg/90 gap-1" id="enemy-biome-filter"></div>
+                </div>
+            </div>
+
+            <div id="enemy-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </section>
+
+        <!-- INTERACTIVE 3-FOOD DIET BUILDER & INGREDIENT TALLY -->
+        <section id="diet-calculator" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-nordic-cardBorder pb-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-nordic-emerald">Nutrition Optimizer</span>
+                        <span class="text-[10px] bg-nordic-emerald/20 text-nordic-emerald font-bold px-2 py-0.5 rounded border border-nordic-emerald/30">Live 3-Food Pool Simulator</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mt-1">Interactive 3-Food Diet Builder & Ingredient Tally</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Assemble up to 3 foods from Mistlands and Ashlands to calculate Max HP, Stamina, and Eitr pools, with an automatic 10-stack farm harvest grocery list.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 self-start md:self-auto" id="diet-preset-buttons"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left: 3 Food Pickers -->
+                <div class="lg:col-span-5 space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Select Active Food Triad (No Duplicates)</h3>
+                    
+                    <div class="space-y-3" id="food-slots-container"></div>
+
+                    <!-- Active Archetype Badge -->
+                    <div id="diet-archetype-banner" class="p-3.5 rounded-lg bg-nordic-bg border border-nordic-cardBorder flex items-center space-x-3"></div>
+                </div>
+
+                <!-- Right: Stat Meters & Ingredient Shopping List -->
+                <div class="lg:col-span-7 space-y-5">
+                    <!-- Stat Meters -->
+                    <div class="bg-nordic-bg/70 border border-nordic-cardBorder rounded-xl p-5 space-y-4">
+                        <span class="text-xs font-bold uppercase text-slate-300 block border-b border-nordic-cardBorder pb-2">Simulated Health, Stamina & Eitr Capacity</span>
+
+                        <!-- HP Bar -->
+                        <div>
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="font-bold text-red-400 flex items-center space-x-1"><span>❤️</span><span>Maximum Health Pool</span></span>
+                                <span id="stat-hp-val" class="font-extrabold text-red-400 font-mono text-sm">25 HP</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-700">
+                                <div id="stat-hp-bar" class="bg-gradient-to-r from-red-600 to-rose-400 h-full rounded-full transition-all duration-300" style="width: 10%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                                <span>Base: 25 HP</span>
+                                <span id="stat-hp-regen">Regen: 0 hp/tick</span>
+                                <span>Max Cap: 280+</span>
+                            </div>
+                        </div>
+
+                        <!-- Stamina Bar -->
+                        <div>
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="font-bold text-amber-400 flex items-center space-x-1"><span>⚡</span><span>Maximum Stamina Pool</span></span>
+                                <span id="stat-stam-val" class="font-extrabold text-amber-400 font-mono text-sm">50 Stamina</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-700">
+                                <div id="stat-stam-bar" class="bg-gradient-to-r from-amber-500 to-yellow-300 h-full rounded-full transition-all duration-300" style="width: 18%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                                <span>Base: 50 Stamina</span>
+                                <span>Jump / Dodge Fuel</span>
+                                <span>Max Cap: 280+</span>
+                            </div>
+                        </div>
+
+                        <!-- Eitr Bar -->
+                        <div>
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="font-bold text-purple-400 flex items-center space-x-1"><span>🔮</span><span>Maximum Eitr (Magic Resource)</span></span>
+                                <span id="stat-eitr-val" class="font-extrabold text-purple-400 font-mono text-sm">0 Eitr</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-700">
+                                <div id="stat-eitr-bar" class="bg-gradient-to-r from-purple-600 to-fuchsia-400 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                                <span>Base: 0 Eitr</span>
+                                <span id="stat-duration-val">Duration: ~25 min</span>
+                                <span>Max Cap: 285+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agricultural Harvest Quota (10 Stacks = 100 Portions) -->
+                    <div class="bg-nordic-bg/70 border border-nordic-cardBorder rounded-xl p-5 space-y-3">
+                        <div class="flex items-center justify-between border-b border-nordic-cardBorder pb-2">
+                            <div>
+                                <span class="text-xs font-bold text-nordic-emerald uppercase tracking-wider">Farm & Forage Quota (10 Stacks / 100 Rations)</span>
+                                <p class="text-[11px] text-slate-400">Total raw crops, mead ingredients, and livestock meat to farm for a full expedition cache.</p>
+                            </div>
+                            <span class="text-[10px] font-mono text-nordic-gold bg-nordic-gold/10 px-2 py-0.5 rounded border border-nordic-gold/30">100 Rations</span>
+                        </div>
+                        <div id="diet-grocery-list" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP-BY-STEP BIOME PROGRESSION ROADMAP & CHECKLIST -->
+        <section id="progression-roadmap" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-nordic-cardBorder pb-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Step-by-Step Survival Guide</span>
+                        <span class="text-[10px] bg-amber-400/20 text-amber-400 font-bold px-2 py-0.5 rounded border border-amber-400/30">Interactive Milestone Tracker</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mt-1">Mistlands & Ashlands Biome Progression Roadmap</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        A verified chronological sequence of 10 milestones per tier. Check off completed objectives to track your biome mastery; state is saved automatically.
+                    </p>
+                </div>
+
+                <div class="flex items-center space-x-3 self-start md:self-auto">
+                    <div class="inline-flex rounded-lg border border-nordic-cardBorder p-1 bg-nordic-bg/90 gap-1" id="roadmap-tier-selector"></div>
+                    <button id="reset-roadmap-btn" class="px-2.5 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-slate-800 rounded border border-nordic-cardBorder transition-all" title="Reset current tier checkboxes">
+                        ↺ Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Meter -->
+            <div class="bg-nordic-bg/70 border border-nordic-cardBorder rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center space-x-2">
+                        <span id="roadmap-tier-title" class="font-bold text-white text-sm">Mistlands (Tier 6) Progression</span>
+                        <span id="roadmap-completion-badge" class="text-xs font-bold px-2 py-0.5 rounded bg-nordic-emerald/20 text-nordic-emerald border border-nordic-emerald/40">0 / 10 Completed (0%)</span>
+                    </div>
+                    <p id="roadmap-next-objective" class="text-xs text-slate-400">Next Objective: Step 1 - Craft Wisplight & Clear Fog</p>
+                </div>
+                <div class="w-full sm:w-64 bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-700 shrink-0">
+                    <div id="roadmap-progress-bar" class="bg-gradient-to-r from-nordic-frost to-nordic-emerald h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Milestones List -->
+            <div id="roadmap-steps-container" class="space-y-4"></div>
+        </section>
+
+
+        <section id="forge-simulator" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-nordic-ember text-xs font-bold uppercase tracking-wider">High-Risk Min-Maxing</span>
+                    <h2 class="text-2xl font-bold text-white mt-1">Forge of Potential Risk Simulator</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Upgrading items past standard caps (Level 4) using Battle/Protection Idols introduces catastrophic failure mechanics.
+                    </p>
+                </div>
+                <div class="bg-nordic-bg/80 border border-nordic-ember/40 p-3 rounded-lg text-xs text-nordic-ember font-medium max-w-md">
+                    ⚠️ <strong>WARNING:</strong> Failure destroys equipment, consumes the Idol, and yields only a partial scrap refund. Always keep backup sets!
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-nordic-bg/50 border border-nordic-cardBorder p-5 sm:p-6 rounded-xl">
+                <div class="lg:col-span-5 space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Select Target Item</label>
+                        <select id="sim-item" class="w-full bg-nordic-card border border-nordic-cardBorder text-white text-sm rounded-lg p-2.5 focus:border-nordic-frost focus:outline-none">
+                            <option value="mistwalker">Mistwalker Frost Sword (Mistlands Tier)</option>
+                            <option value="carapace-buckler">Carapace Buckler (Mistlands Tier)</option>
+                            <option value="staff-protection">Staff of Protection (Mistlands Tier)</option>
+                            <option value="berserkir-axes">Berserkir Dual Axes (Ashlands Tier)</option>
+                            <option value="slayer-greatsword">Slayer Greatsword (Ashlands Tier)</option>
+                            <option value="nord-buckler">Nord Buckler (Deep North Tier)</option>
+                            <option value="vanguard-chest">Vanguard Chestpiece (Deep North Tier)</option>
+                            <option value="thunder-mace">Thunderblood Mace (Deep North Tier)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Idol Sacrificed</label>
+                        <select id="sim-idol" class="w-full bg-nordic-card border border-nordic-cardBorder text-white text-sm rounded-lg p-2.5 focus:border-nordic-frost focus:outline-none">
+                            <option value="artisan-anvil">Artisan Focus (Standard +0%)</option>
+                            <option value="flametal-idol">Flametal Protection Idol (+10% Odds)</option>
+                            <option value="bloodgold-idol">Bloodgold Battle Idol (+20% Odds)</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-2">
+                        <button id="sim-run-btn" class="w-full bg-gradient-to-r from-nordic-gold to-nordic-ember hover:opacity-90 text-slate-950 font-bold py-3 px-4 rounded-lg shadow-lg transition-all text-sm tracking-wider uppercase">
+                            Attempt Refinement
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-nordic-card border border-nordic-cardBorder p-5 rounded-lg space-y-4">
+                    <div class="flex justify-between items-center border-b border-nordic-cardBorder pb-3">
+                        <span class="text-xs font-bold uppercase text-slate-400">Refinement Forecast</span>
+                        <span id="sim-success-rate" class="text-xs font-extrabold text-nordic-emerald bg-nordic-emerald/10 px-2 py-1 rounded">Success Rate: 65%</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-nordic-bg/60 p-3 rounded border border-nordic-cardBorder">
+                            <span class="text-[11px] text-slate-400 uppercase font-semibold block">Stat Growth On Success</span>
+                            <span id="sim-stat-gain" class="text-base font-bold text-nordic-frost mt-1 block">+12 Block Armor / Durability</span>
+                        </div>
+                        <div class="bg-nordic-bg/60 p-3 rounded border border-nordic-cardBorder">
+                            <span class="text-[11px] text-slate-400 uppercase font-semibold block">Failure Penalty</span>
+                            <span id="sim-fail-penalty" class="text-base font-bold text-nordic-ember mt-1 block">Item Destroyed + 25% Metal Refund</span>
+                        </div>
+                    </div>
+
+                    <div id="sim-console" class="bg-slate-950 border border-slate-800 p-3 rounded font-mono text-xs text-slate-300 h-24 overflow-y-auto flex items-center justify-center text-center">
+                        Select item and execute attempt to simulate outcome.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="boss-strategy" class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-6 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-nordic-cardBorder pb-4">
+                <div>
+                    <span class="text-rose-400 text-xs font-bold uppercase tracking-wider">Endgame Boss Confrontations</span>
+                    <h2 class="text-2xl font-bold text-white mt-1">Apex Boss Strategy & Damage Profiles</h2>
+                    <p class="text-slate-400 text-sm mt-1">
+                        Select a boss to inspect exact elemental damage affinities, radar vulnerability profiles, and phase-by-phase combat tactics.
+                    </p>
+                </div>
+                <div class="inline-flex rounded-lg border border-nordic-cardBorder p-1 bg-nordic-bg/90 gap-1 self-start md:self-auto" id="boss-selector-tabs"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6 bg-nordic-bg/60 border border-nordic-cardBorder rounded-xl p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span id="boss-tier-badge" class="text-nordic-frost text-xs font-bold uppercase tracking-wider">Mistlands Apex Boss</span>
+                            <h3 id="boss-name" class="text-2xl font-bold text-white">The Queen Vulnerabilities</h3>
+                        </div>
+                        <span id="boss-summon-badge" class="text-xs bg-purple-950 text-purple-300 font-bold px-2.5 py-1 rounded border border-purple-700/60">Sealbreaker Key</span>
+                    </div>
+                    <p id="boss-lore-desc" class="text-xs text-slate-300 leading-relaxed">
+                        The Queen rules the Infested Citadel. She summons relentless Seeker broods, burrows underground, and charges with lethal scythe attacks.
+                    </p>
+                    <div class="chart-container" style="height: 320px;">
+                        <canvas id="bossChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-4" id="boss-phases-container"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-nordic-bg border-t border-nordic-cardBorder mt-12 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            Valheim 1.0 Meta Strategy Guide & Architecture • Data Synthesized for Maximum Temporal Efficiency
+        </div>
+    </footer>
+
+    <script>
+        const biomeBomData = [
+    {
+        "id": "meadows-forest",
+        "name": "Meadows & Black Forest",
+        "nameShort": "Meadows & Forest",
+        "icon": "🌲",
+        "primaryMetal": "Bronze (Copper + Tin)",
+        "quotaSummary": "33 Bronze (22 Copper, 11 Tin)",
+        "stations": [
+            {
+                "name": "Workbench + Upgrades",
+                "cost": "30 Wood, 10 Fine Wood, 25 Flint, 20 Leather Scraps, 5 Deer Hide, 3 Bronze (Chopping Block, Tanning Rack, Adze)"
+            },
+            {
+                "name": "Smelter & Charcoal Kiln",
+                "cost": "10 Surtling Cores, 40 Stone (Smelter & Kiln)"
+            },
+            {
+                "name": "Forge + Upgrades",
+                "cost": "6 Copper, 10 Wood, 4 Stone, 5 Deer Hide, 10 Fine Wood, 4 Bronze (Anvil, Forge Cooler)"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Troll Leather Armor Set",
+                "cost": "25 Troll Hide, 13 Bone Fragments (0% Run Penalty, Skip Bronze Armor)"
+            },
+            {
+                "name": "Finewood Bow",
+                "cost": "10 Fine Wood, 10 Core Wood, 2 Deer Hide"
+            },
+            {
+                "name": "Bronze Axe",
+                "cost": "4 Wood, 8 Bronze, 2 Leather Scraps"
+            },
+            {
+                "name": "Bronze Pickaxe",
+                "cost": "3 Core Wood, 10 Bronze"
+            },
+            {
+                "name": "Cultivator",
+                "cost": "5 Core Wood, 5 Bronze"
+            },
+            {
+                "name": "Bronze Buckler (Optional)",
+                "cost": "10 Bronze, 5 Wood"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals",
+                "items": "22 Copper Ore, 11 Tin Ore (Yields 33 Bronze total)"
+            },
+            {
+                "cat": "Woods",
+                "items": "80 Wood, 28 Core Wood, 25 Fine Wood"
+            },
+            {
+                "cat": "Hides & Leather",
+                "items": "25 Troll Hide, 22 Deer Hide, 22 Leather Scraps"
+            },
+            {
+                "cat": "Special / Drops",
+                "items": "10 Surtling Cores, 13 Bone Fragments, 10 Flint, 44 Stone"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Cooked Deer Meat",
+                "stats": "35 HP, 12 Stamina",
+                "ingredients": "1 Raw Deer Meat (Zero farming overhead)"
+            },
+            {
+                "name": "Cooked Boar Meat",
+                "stats": "30 HP, 10 Stamina",
+                "ingredients": "1 Raw Boar Meat (Abundant early passive drop)"
+            },
+            {
+                "name": "Honey",
+                "stats": "8 HP, 35 Stamina",
+                "ingredients": "1 Honey (Infinite yield from passive beehives)"
+            },
+            {
+                "name": "Carrot Soup (Post-Cultivator)",
+                "stats": "15 HP, 45 Stamina",
+                "ingredients": "1 Mushroom, 3 Carrots (Primary stamina source)"
+            }
+        ],
+        "metaTip": "Direct 100% of your Bronze toward tools and forge upgrades. Crafting Bronze Armor requires an extra ~80 Bronze and wastes 15+ hours of mining for negligible protection. Rely on Honey + Deer Meat + Carrot Soup."
+    },
+    {
+        "id": "swamp",
+        "name": "Swamp",
+        "icon": "☣️",
+        "nameShort": "Swamp",
+        "primaryMetal": "Iron",
+        "quotaSummary": "130 Iron Ingots (~4 Crypts)",
+        "stations": [
+            {
+                "name": "Forge Upgrades (Tier 3-5)",
+                "cost": "20 Iron, 5 Fine Wood, 18 Chains, 5 Wood (Forge Anvil, Forge Toolrack, Forge Bellows)"
+            },
+            {
+                "name": "Stonecutter",
+                "cost": "10 Wood, 2 Iron, 4 Stone"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Root Harnesk (Chest)",
+                "cost": "10 Roots, 10 Ancient Bark, 2 Deer Hide (50% Pierce Resistance Passive)"
+            },
+            {
+                "name": "Iron Mace",
+                "cost": "4 Wood, 20 Iron, 3 Leather Scraps"
+            },
+            {
+                "name": "Iron Pickaxe",
+                "cost": "3 Core Wood, 20 Iron"
+            },
+            {
+                "name": "Banded Shield",
+                "cost": "10 Fine Wood, 8 Iron"
+            },
+            {
+                "name": "Huntsman Bow",
+                "cost": "10 Fine Wood, 20 Iron, 10 Feathers, 2 Deer Hide"
+            },
+            {
+                "name": "Iron Sledge (AOE CC)",
+                "cost": "10 Ancient Bark, 30 Iron, 4 Ymir Flesh, 1 Draugr Elite Trophy"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals",
+                "items": "130 Scrap Iron (Smelted into 130 Iron Ingots)"
+            },
+            {
+                "cat": "Woods & Plants",
+                "items": "25 Fine Wood, 20 Ancient Bark, 19 Wood, 3 Core Wood"
+            },
+            {
+                "cat": "Hides & Trophies",
+                "items": "10 Roots, 4 Deer Hide, 3 Leather Scraps, 1 Draugr Elite Trophy"
+            },
+            {
+                "cat": "Special Drops",
+                "items": "18 Chains, 10 Feathers, 4 Ymir Flesh (Bought from Haldor)"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Sausages (Highest Batch Yield)",
+                "stats": "44 HP, 15 Stamina",
+                "ingredients": "2 Entrails, 1 Raw Meat, 4 Thistle = 4 Sausages"
+            },
+            {
+                "name": "Turnip Stew",
+                "stats": "18 HP, 50 Stamina",
+                "ingredients": "1 Raw Meat, 3 Turnips (Mass passive crop yield)"
+            },
+            {
+                "name": "Muckshake / Minced Meat Sauce",
+                "stats": "10 HP, 50 Stamina",
+                "ingredients": "1 Ooze, 2 Raspberries, 2 Blueberries (Instant stamina boost)"
+            }
+        ],
+        "metaTip": "Root Harnesk is mandatory for 1.0 efficiency. Its passive -50% Pierce resistance outperforms heavy Iron armor against archers, Deathsquitos, and Seekers. Sausages offer the highest craft yield per ingredient ratio in the game."
+    },
+    {
+        "id": "mountains",
+        "name": "Mountains",
+        "icon": "🏔️",
+        "nameShort": "Mountains",
+        "primaryMetal": "Silver",
+        "quotaSummary": "110 Silver Ingots (~3 Veins)",
+        "stations": [
+            {
+                "name": "Workbench Upgrade (Tool Shelf)",
+                "cost": "4 Iron, 10 Fine Wood, 4 Obsidian"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Frostner (BiS Blunt/Frost)",
+                "cost": "10 Ancient Bark, 30 Silver, 5 Ymir Flesh, 5 Freeze Glands"
+            },
+            {
+                "name": "Draugr Fang (Bow)",
+                "cost": "10 Ancient Bark, 20 Silver, 2 Deer Hide, 10 Guck"
+            },
+            {
+                "name": "Fenris Coat, Trousers & Hood",
+                "cost": "60 Fenris Hair, 12 Wolf Pelts, 1 Cultist Trophy (+9% Total Speed Buff)"
+            },
+            {
+                "name": "Wolf Fur Cape",
+                "cost": "6 Wolf Pelts, 4 Silver, 1 Wolf Trophy (Frost Protection)"
+            },
+            {
+                "name": "Silver Shield / Fang Spear",
+                "cost": "10 Fine Wood, 16 Silver, 8 Ancient Bark, 4 Wolf Pelts"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals",
+                "items": "110 Silver Ore, 4 Iron Ingots"
+            },
+            {
+                "cat": "Woods",
+                "items": "28 Ancient Bark, 20 Fine Wood"
+            },
+            {
+                "cat": "Hides & Pelts",
+                "items": "60 Fenris Hair, 22 Wolf Pelts, 2 Deer Hide"
+            },
+            {
+                "cat": "Special Drops",
+                "items": "10 Guck, 5 Freeze Glands, 5 Ymir Flesh, 4 Obsidian, 1 Wolf Trophy, 1 Cultist Trophy"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Wolf Skewer",
+                "stats": "65 HP, 21 Stamina",
+                "ingredients": "1 Wolf Meat, 2 Mushrooms, 1 Onion"
+            },
+            {
+                "name": "Onion Soup (Zero Hunting Required)",
+                "stats": "20 HP, 60 Stamina",
+                "ingredients": "3 Onions (Mass crop production in base)"
+            },
+            {
+                "name": "Eyescream",
+                "stats": "21 HP, 65 Stamina",
+                "ingredients": "1 Freeze Gland, 3 Greydwarf Eyes"
+            }
+        ],
+        "metaTip": "Combine the Fenris Set (+9% movement speed) with Frostner. Frostner's frost slow effect trivializes crowd control in Plains and Mistlands. Onion Soup + Eyescream provides max stamina with zero hunting required."
+    },
+    {
+        "id": "plains",
+        "name": "Plains",
+        "icon": "🌾",
+        "nameShort": "Plains",
+        "primaryMetal": "Blackmetal",
+        "quotaSummary": "90 Blackmetal Scraps & 80 Linen Thread",
+        "stations": [
+            {
+                "name": "Blast Furnace",
+                "cost": "20 Stone, 5 Surtling Cores, 10 Iron, 20 Fine Wood"
+            },
+            {
+                "name": "Windmill",
+                "cost": "20 Wood, 30 Stone, 30 Barley"
+            },
+            {
+                "name": "Spinning Wheel",
+                "cost": "20 Fine Wood, 10 Iron, 5 Nails"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Blackmetal Atgeir",
+                "cost": "30 Fine Wood, 30 Blackmetal, 5 Leather Scraps (Spinning Secondary Strike)"
+            },
+            {
+                "name": "Padded Helmet & Greaves",
+                "cost": "30 Blackmetal, 35 Linen Thread (Paired with Root Harnesk Chest)"
+            },
+            {
+                "name": "Porcupine (Mace)",
+                "cost": "5 Fine Wood, 20 Iron, 5 Needle, 10 Thread"
+            },
+            {
+                "name": "Blackmetal Shield",
+                "cost": "10 Fine Wood, 10 Blackmetal, 5 Chains"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals",
+                "items": "70 Blackmetal Scraps, 40 Iron Ingots"
+            },
+            {
+                "cat": "Woods & Crops",
+                "items": "65 Fine Wood, 20 Wood, 30 Barley, 80 Flax (Processed to Linen Thread)"
+            },
+            {
+                "cat": "Hides & Leathers",
+                "items": "5 Leather Scraps"
+            },
+            {
+                "cat": "Special Drops",
+                "items": "5 Needles, 5 Surtling Cores, 5 Chains, 50 Stone"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Lox Meat Pie",
+                "stats": "75 HP, 24 Stamina",
+                "ingredients": "2 Barley Flour, 2 Lox Meat, 2 Cloudberries"
+            },
+            {
+                "name": "Blood Pudding",
+                "stats": "25 HP, 75 Stamina",
+                "ingredients": "4 Barley Flour, 2 Bloodbag, 2 Thistle"
+            },
+            {
+                "name": "Bread",
+                "stats": "23 HP, 70 Stamina",
+                "ingredients": "10 Barley Flour (Pure renewable stamina)"
+            }
+        ],
+        "metaTip": "Do not craft Padded Cuirass. Keep Root Harnesk equipped for pierce defense against Deathsquitos while wearing Padded Greaves & Helmet for physical armor density. Lox Meat Pie + Blood Pudding is the premier Plains diet."
+    },
+    {
+        "id": "mistlands",
+        "name": "Mistlands",
+        "icon": "🌫️",
+        "nameShort": "Mistlands",
+        "primaryMetal": "Refined Eitr & Black Marble",
+        "quotaSummary": "45 Refined Eitr, 35 Yggdrasil Wood, 5 Black Cores",
+        "stations": [
+            {
+                "name": "Black Forge + Extension (Cooler)",
+                "cost": "10 Black Marble, 10 Yggdrasil Wood, 5 Black Cores (Base Forge) + 5 Iron, 5 Copper, 4 Black Marble (Cooler)"
+            },
+            {
+                "name": "Galdr Table + Extension (Rune Table)",
+                "cost": "20 Black Marble, 10 Yggdrasil Wood, 5 Refined Eitr, 5 Black Metal (Table) + 10 Black Marble, 5 Yggdrasil Wood, 10 Refined Eitr (Rune Table)"
+            },
+            {
+                "name": "Eitr Refinery",
+                "cost": "20 Black Marble, 5 Black Metal, 10 Yggdrasil Wood, 5 Black Cores, 3 Sap"
+            },
+            {
+                "name": "Sap Extractor (Build on Ancient Roots)",
+                "cost": "10 Yggdrasil Wood, 5 Black Metal, 1 Dvergr Extractor"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Feather Cape (Mandatory Zero Fall Damage)",
+                "cost": "10 Feathers, 5 Scale Hide, 20 Refined Eitr (Note: +20% Fire Vulnerability)"
+            },
+            {
+                "name": "Mistwalker (Frost/Slash Sword)",
+                "cost": "10 Fine Wood, 15 Refined Eitr, 3 Black Metal, 20 Iron"
+            },
+            {
+                "name": "Staff of Protection (700 HP Bubble Shield)",
+                "cost": "20 Yggdrasil Wood, 4 Refined Eitr, 1 Blood Clot"
+            },
+            {
+                "name": "Staff of Embers (AoE Fire Artillery)",
+                "cost": "20 Yggdrasil Wood, 4 Refined Eitr, 8 Surtling Cores"
+            },
+            {
+                "name": "Staff of Frost (Rapid Single-Target Shards)",
+                "cost": "20 Yggdrasil Wood, 15 Freeze Glands, 4 Refined Eitr"
+            },
+            {
+                "name": "Arbalest (200 Pierce Crossbow)",
+                "cost": "10 Iron, 8 Mechanical Springs, 1 Yggdrasil Wood"
+            },
+            {
+                "name": "Demolisher (Radial Blunt AoE)",
+                "cost": "10 Refined Eitr, 20 Yggdrasil Wood, 20 Iron"
+            },
+            {
+                "name": "Wisplight (360° Demisting Aura)",
+                "cost": "1 Silver, 1 Wisp (Captured at night from Wisp Fountain)"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals & Magic",
+                "items": "45 Refined Eitr, 30 Iron, 20 Copper, 13 Black Metal, 5 Black Cores"
+            },
+            {
+                "cat": "Woods & Stone",
+                "items": "65 Yggdrasil Wood, 54 Black Marble, 10 Fine Wood"
+            },
+            {
+                "cat": "Hides & Organics",
+                "items": "5 Scale Hide, 1 Blood Clot, 4 Mandibles, 15 Freeze Glands"
+            },
+            {
+                "cat": "Special Drops",
+                "items": "10 Feathers, 8 Surtling Cores, 1 Dvergr Extractor, 1 Wisp, 8 Mechanical Springs"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Salad (Best Stamina Food in Game)",
+                "stats": "15 HP, 80 Stamina",
+                "ingredients": "3 Jotun Puffs, 3 Onion, 3 Cloudberry (Crafts 3 Salads)"
+            },
+            {
+                "name": "Misthare Supreme (Stone Oven)",
+                "stats": "85 HP, 28 Stamina",
+                "ingredients": "1 Misthare Meat, 3 Jotun Puffs, 2 Carrots"
+            },
+            {
+                "name": "Seeker Aspic (Eitr Food)",
+                "stats": "28 HP, 14 Stamina, 85 Eitr",
+                "ingredients": "2 Seeker Meat, 2 Magecap, 2 Royal Jelly (Crafts 2)"
+            },
+            {
+                "name": "Yggdrasil Porridge (Eitr Food)",
+                "stats": "27 HP, 13 Stamina, 80 Eitr",
+                "ingredients": "4 Sap, 3 Barley, 2 Royal Jelly"
+            }
+        ],
+        "metaTip": "⚠️ CRITICAL SURVIVAL: Prioritize the Feather Cape immediately upon entering Mistlands to eliminate lethal cliff fall damage. WARNING: Both the Feather Cape (+20%) and Root Harnesk (+50%) are weak to Fire. ALWAYS keep Fire Resistance Barley Wine active when Gjalls are in the airspace! Salad is the supreme stamina food due to 100% crop farmability."
+    },
+    {
+        "id": "ashlands",
+        "name": "Ashlands",
+        "icon": "🌋",
+        "nameShort": "Ashlands",
+        "primaryMetal": "Flametal",
+        "quotaSummary": "80 Flametal Ingots, 12 Molten Cores, 30 Ceramic Plates",
+        "stations": [
+            {
+                "name": "The Drakkar Ship (Mandatory Ocean Vessel)",
+                "cost": "100 Iron Nails, 30 Ceramic Plates, 50 Yggdrasil Wood, 25 Fine Wood"
+            },
+            {
+                "name": "Artisan Press (Crafts Ceramic Plates)",
+                "cost": "5 Bronze, 5 Granite (Requires Artisan Table)"
+            },
+            {
+                "name": "Shield Generator (Base Defense)",
+                "cost": "5 Ceramic Plates, 5 Copper, 5 Iron, 1 Molten Core"
+            },
+            {
+                "name": "Siege Catapult / Battering Ram",
+                "cost": "30 Ashwood, 10 Iron, 15 Flametal, 4 Mechanical Springs"
+            },
+            {
+                "name": "Black Forge & Galdr Upgrades",
+                "cost": "10 Flametal, 10 Ashwood, 4 Molten Cores"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Berserkir Dual Axes (Lightning Infused)",
+                "cost": "20 Flametal, 10 Ashwood, 1 Iolite Gem (Chains lightning through swarms)"
+            },
+            {
+                "name": "Slayer (Flametal 2H Greatsword)",
+                "cost": "20 Flametal, 10 Ashwood, 2 Blood Clots"
+            },
+            {
+                "name": "Ripper (Flametal Siege Arbalest)",
+                "cost": "20 Flametal, 10 Ashwood, 4 Mechanical Springs"
+            },
+            {
+                "name": "Dundr (Eitr Lightning Shotgun)",
+                "cost": "20 Ashwood, 15 Refined Eitr, 1 Iolite Gem"
+            },
+            {
+                "name": "Trollstav (Orbital Magma Troll Strike)",
+                "cost": "20 Ashwood, 15 Refined Eitr, 1 Molten Core, 20 Bone Fragments"
+            },
+            {
+                "name": "Asksvin Cloak (Fire & Stamina)",
+                "cost": "20 Asksvin Pelts, 5 Ashwood (Reduces sprint/jump stamina cost by 15%)"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals & Alloys",
+                "items": "80 Flametal Ingots, 100 Iron Nails, 20 Iron, 5 Copper, 5 Bronze"
+            },
+            {
+                "cat": "Woods & Stone",
+                "items": "80 Ashwood, 50 Yggdrasil Wood, 25 Fine Wood, 30 Ceramic Plates (from Black Marble)"
+            },
+            {
+                "cat": "Hides & Pelts",
+                "items": "20 Asksvin Pelts, 2 Blood Clots, 20 Bone Fragments"
+            },
+            {
+                "cat": "Gems & Special Drops",
+                "items": "12 Molten Cores, 2 Iolite Gems (Storm), 1 Jade Gem (Nature), 8 Mechanical Springs"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Mashed Meat (High HP)",
+                "stats": "85 HP, 28 Stamina",
+                "ingredients": "2 Asksvin Meat, 2 Lox Meat, 2 Sausages"
+            },
+            {
+                "name": "Fiery Svinstew (High HP)",
+                "stats": "85 HP, 28 Stamina",
+                "ingredients": "3 Asksvin Meat, 3 Fiddlehead, 3 Smoke Puff"
+            },
+            {
+                "name": "Piquant Pie (High Stamina)",
+                "stats": "28 HP, 85 Stamina",
+                "ingredients": "2 Asksvin Meat, 2 Cloudberries, 2 Barley Flour"
+            },
+            {
+                "name": "Sparkling Shroomshake (High Eitr)",
+                "stats": "28 HP, 14 Stamina, 90 Eitr",
+                "ingredients": "3 Smoke Puff, 3 Fiddlehead, 1 Vineberry"
+            }
+        ],
+        "metaTip": "⚠️ ASHLANDS LANDING PROTOCOL: Do NOT sail a Longship or Karve south; the boiling ocean destroys standard ships in 20 seconds. You MUST construct the Drakkar with Ceramic Plates. Establish a secure stone beachhead immediately with a Shield Generator to deflect falling meteors and aerial Valkyrie bombardment."
+    },
+    {
+        "id": "deepnorth",
+        "name": "Deep North",
+        "icon": "❄️",
+        "nameShort": "Deep North",
+        "primaryMetal": "Bloodgold Ingots",
+        "quotaSummary": "40 Bloodgold Ingots, 8 Liquid Frost",
+        "stations": [
+            {
+                "name": "Frigid Kiln",
+                "cost": "20 Glacial Ice, 10 Flametal, 4 Surtling Cores"
+            },
+            {
+                "name": "Frost Foundry",
+                "cost": "25 Bloodgold, 15 Glacial Ice, 5 Liquid Frost"
+            },
+            {
+                "name": "Smith's Aprons (Station Upgrade)",
+                "cost": "10 Gammeltroll Pelts, 5 Bloodgold"
+            }
+        ],
+        "gear": [
+            {
+                "name": "Vanguard Armor Set (Full)",
+                "cost": "30 Bloodgold, 20 Gammeltroll Pelts, 3 Weapon Molds (BiS 1.0 Hybrid)"
+            },
+            {
+                "name": "Thunderblood Mace",
+                "cost": "15 Bloodgold, 1 Lightning Gem, 1 Mace Mold, 3 Liquid Frost"
+            },
+            {
+                "name": "Nord Buckler",
+                "cost": "10 Bloodgold, 5 Gammeltroll Pelts, 1 Shield Mold"
+            },
+            {
+                "name": "Staff of Northern Vengeance",
+                "cost": "15 Refined Eitr, 10 Bloodgold, 1 Staff Mold, 2 Liquid Frost"
+            }
+        ],
+        "bom": [
+            {
+                "cat": "Primary Metals & Energy",
+                "items": "40 Bloodgold Ingots, 10 Flametal, 15 Refined Eitr, 8 Liquid Frost"
+            },
+            {
+                "cat": "Ice & Materials",
+                "items": "35 Glacial Ice, 25 Petrified Tissue"
+            },
+            {
+                "cat": "Hides & Trophies",
+                "items": "25 Gammeltroll Pelts"
+            },
+            {
+                "cat": "Special Drops",
+                "items": "6 Dungeon Molds (Mörkhalla/Tunnels), 1 Lightning Gem, 4 Surtling Cores"
+            }
+        ],
+        "foods": [
+            {
+                "name": "Seal Meat Soup",
+                "stats": "105 HP, 35 Stamina",
+                "ingredients": "2 Seal Meat, 2 Glacial Herb, 1 Northern Poteitr"
+            },
+            {
+                "name": "Cooked Moose Meat",
+                "stats": "100 HP, 33 Stamina",
+                "ingredients": "1 Raw Moose Meat (Massive raw HP buffer)"
+            },
+            {
+                "name": "Baked Poteitr",
+                "stats": "32 HP, 95 Stamina",
+                "ingredients": "2 Northern Poteitr (Top tier endgame stamina crop)"
+            }
+        ],
+        "metaTip": "The Vanguard Set paired with Thunderblood Mace represents the definitive 1.0 endgame meta: net zero speed tax, +10% stamina regen, and lightning stagger combo. Seal Meat Soup + Baked Poteitr provides maximum stats for Kall Fimbulbringer."
+    }
+];
+
+        const buildData = [
+            // --- MISTLANDS TIER (TIER 6) ---
+            {
+                id: 'mistlands-carapace-juggernaut',
+                biome: 'mistlands',
+                biomeName: 'Mistlands Tier',
+                name: 'Carapace Frontline Juggernaut',
+                tag: 'Heavy Melee & Frost Crowd Control',
+                icon: '🛡️',
+                head: 'Carapace Helmet (Lvl 3: 36 Armor)',
+                chest: 'Carapace Breastplate (or Root Harnesk vs Seekers)',
+                legs: 'Carapace Greaves (Lvl 3: 36 Armor)',
+                cape: 'Feather Cape (Mandatory: Zero Fall Damage)',
+                trinket: 'Wisplight (or Megingjord in cleared zones)',
+                primaryWeapon: 'Mistwalker (Frost/Slash with perpetual Slow)',
+                offhand: 'Carapace Buckler (x2.5 Parry) / Demolisher (AoE Stagger)',
+                food: 'Misthare Supreme (85 HP), Meat Platter (80 HP), Salad (80 Stamina)',
+                meads: 'Major Healing Mead, Medium Stamina Mead, Fire Resistance Barley Wine',
+                summary: 'Provides 96+ raw base armor with complete vertical fall immunity. Mistwalker’s potent Frost chill freezes lethal Seeker Soldiers in place, while Demolisher’s radial shockwave obliterates Tick swarms through dungeon walls.',
+                progressionTip: 'Craft the Black Forge (Black Marble + Yggdrasil Wood + 5 Black Cores from Infested Mines). Craft the Feather Cape IMMEDIATELY before exploring crags, then forge Mistwalker to permanently pacify aggressive Seeker swarms.'
+            },
+            {
+                id: 'mistlands-elemental-arcanist',
+                biome: 'mistlands',
+                biomeName: 'Mistlands Tier',
+                name: 'Galdr Elemental Pyromancer',
+                tag: 'High-DPS Elemental Artillery & Boss Shredder',
+                icon: '🔥',
+                head: 'Eitr-weave Hood (+20% Eitr Regen)',
+                chest: 'Eitr-weave Robe (+40% Eitr Regen)',
+                legs: 'Eitr-weave Trousers (+40% Eitr Regen)',
+                cape: 'Feather Cape (Aerial Fireball Gliding)',
+                trinket: 'Wisplight',
+                primaryWeapon: 'Staff of Embers (Long-Range Artillery Fireballs)',
+                offhand: 'Staff of Frost (Rapid-Fire Single-Target Shards) / Staff of Protection',
+                food: 'Seeker Aspic (85 Eitr), Yggdrasil Porridge (80 Eitr), Salad (80 Stamina)',
+                meads: 'Minor Eitr Mead, Lingering Eitr Mead, Major Healing, Fire Resistance Wine',
+                summary: 'Grants +100% passive Eitr regeneration. Staff of Embers delivers heavy AoE blunt/fire splash to clear Infested Mines safely from elevated ledges, while Staff of Frost burns through Gjalls and The Queen.',
+                progressionTip: 'Construct the Galdr Table (5 Black Cores + 5 Refined Eitr). Steal a Dvergr Extractor from a Dvergr component crate to build Sap Extractors on Ancient Roots, then refine Sap + Soft Tissue into Refined Eitr.'
+            },
+            {
+                id: 'mistlands-blood-necromancer',
+                biome: 'mistlands',
+                biomeName: 'Mistlands Tier',
+                name: 'Blood Magic Necro-Commander',
+                tag: 'Minion Legion & Impenetrable Bubble Shield',
+                icon: '💀',
+                head: 'Eitr-weave Hood (+20% Eitr Regen)',
+                chest: 'Eitr-weave Robe (+40% Eitr Regen)',
+                legs: 'Eitr-weave Trousers (+40% Eitr Regen)',
+                cape: 'Feather Cape',
+                trinket: 'Wisplight',
+                primaryWeapon: 'Dead Raiser (Summons 2-4 Skelett Warriors/Archers)',
+                offhand: 'Staff of Protection (700 HP Bubble Shield for you & pets) / Himmin Afl',
+                food: 'Seeker Aspic (85 Eitr), Yggdrasil Porridge (80 Eitr), Misthare Supreme (85 HP to fund summon HP sacrifice)',
+                meads: 'Major Healing Mead (heals summon HP cost), Minor Eitr Mead, Fire Wine',
+                summary: 'The safest solo progression build in Valheim. The Blood Shield bubble absorbs up to 700 raw incoming damage from Gjall firebombs and Soldier smashes, while your skeleton army tanks frontline aggro and clears mine rooms.',
+                progressionTip: 'Level Blood Magic skill safely by casting Blood Shield on tamed animals or summoning skeletons near Greydwarf nests. At skill 30+, your shield absorbs devastating hits, making sudden one-shots mathematically impossible.'
+            },
+            {
+                id: 'mistlands-arbalest-skirmisher',
+                biome: 'mistlands',
+                biomeName: 'Mistlands Tier',
+                name: 'Arbalest Stealth Infiltrator',
+                tag: 'High-Penetration Sniper & 50% Pierce Defense',
+                icon: '🏹',
+                head: 'Carapace Helmet (or Fenris Hood for Speed)',
+                chest: 'Root Harnesk (Passive 50% Pierce Resist vs Seekers/Ticks)',
+                legs: 'Carapace Greaves (or Fenris Trousers)',
+                cape: 'Feather Cape',
+                trinket: 'Wisplight / Megingjord',
+                primaryWeapon: 'Arbalest (200 Base Pierce) + Carapace / Iron Bolts',
+                offhand: 'Spinesnap (Dark-infused Bow) / Skoll and Hati (Dual Daggers 6x Sneak)',
+                food: 'Salad (80 Stamina), Mushroom Omelette (85 Stamina), Misthare Supreme (85 HP)',
+                meads: 'Medium Stamina Mead, Tasty Mead (rapid sprint recovery), Major Healing',
+                summary: 'Combines the legendary 50% Pierce mitigation of the Root Harnesk with the 200-damage Arbalest. Delivers lethal 600+ ambush damage across foggy chasms, one-shotting Seekers and Dvergr from complete stealth.',
+                progressionTip: 'Craft the Arbalest at the Black Forge as soon as you collect 10 Iron + 8 Mechanical Springs. Pair it with the Root Harnesk to trivialise Seeker attacks, and use Skoll & Hati secondary leap for silent assassinations.'
+            },
+
+            // --- ASHLANDS TIER (TIER 7) ---
+            {
+                id: 'ashlands-flametal-berserker',
+                biome: 'ashlands',
+                biomeName: 'Ashlands Tier',
+                name: 'Flametal Ash-Warden',
+                tag: 'Heavy Melee Cleave & Storm-Gem Infusion',
+                icon: '⚔️',
+                head: 'Flametal Helmet (Armor 36-38)',
+                chest: 'Flametal Breastplate (Armor 36-38)',
+                legs: 'Flametal Greaves (Armor 36-38)',
+                cape: 'Asksvin Cloak (-15% Sprint/Jump Stamina) or Feather Cape',
+                trinket: 'Megingjord',
+                primaryWeapon: 'Berserkir Axes (Dual-Wield Lightning) or Slayer (2H Greatsword)',
+                offhand: 'Flametal Shield / Nidvegr (Flametal Mace with Storm Gem)',
+                food: 'Mashed Meat (85 HP), Meat Platter (80 HP), Piquant Pie (85 Stamina)',
+                meads: 'Major Healing Mead, Lingering Stamina Mead, Fire Resistance Barley Wine',
+                summary: 'Boasts 114+ base armor. The Ashlands swarm demands sweeping crowd-cleave: Berserkir Axes or the sweeping Slayer Greatsword chain-stagger relentless Charred warrior hordes, with Lightning enchantments arcing between enemies.',
+                progressionTip: 'Build the reinforced Drakkar ship (requires Ceramic Plates from the Artisan Table) to survive the boiling ocean. Establish a secure stone beachhead, breach Charred Fortresses with Battering Rams, and smelt Flametal in the Blast Furnace.'
+            },
+            {
+                id: 'ashlands-askur-ranger',
+                biome: 'ashlands',
+                biomeName: 'Ashlands Tier',
+                name: 'Askur Stalker Marksman',
+                tag: 'Hyper-Mobile Ranged Artillery & Siege Sniper',
+                icon: '🎯',
+                head: 'Ask Hood',
+                chest: 'Ask Chest (Increases Bow/Crossbow Draw & Reload Speed)',
+                legs: 'Ask Trousers',
+                cape: 'Asksvin Cloak (-15% Stamina Drain)',
+                trinket: 'Megingjord',
+                primaryWeapon: 'Ripper (Flametal Heavy Arbalest) + Meteor / Bone Bolts',
+                offhand: 'Ash Fang (Bow with Lightning/Nature Gem) / Dual Daggers',
+                food: 'Piquant Pie (85 Stamina), Sizzling Berry Broth (85 Stamina), Scorching Medley (80 HP)',
+                meads: 'Major Stamina Mead, Lingering Stamina Mead, Major Healing Mead',
+                summary: 'The Ask set grants massive stamina reductions and +25% faster reload times. The Ripper with explosive Meteor Bolts acts as portable artillery, bombarding Charred Fortresses and Morgen from extreme safety.',
+                progressionTip: 'Tame Asksvins for durable hides, meat, and battle mounts. Hunt Morgen in volcanic caverns for sinew, then craft the Ask armor set at the Black Forge for unstoppable mobile ranged domination.'
+            },
+            {
+                id: 'ashlands-embla-pyromancer',
+                biome: 'ashlands',
+                biomeName: 'Ashlands Tier',
+                name: 'Embla Celestial Pyromancer',
+                tag: 'AoE Vine Entanglement & Flak Lightning Burst',
+                icon: '🌋',
+                head: 'Embla Hood (+25% Eitr Regen)',
+                chest: 'Embla Robes (+50% Eitr Regen)',
+                legs: 'Embla Trousers (+50% Eitr Regen)',
+                cape: 'Asksvin Cloak or Feather Cape',
+                trinket: 'Megingjord',
+                primaryWeapon: 'Dundr (Eitr Lightning Shotgun - Obliterates Valkyries)',
+                offhand: 'Staff of the Fractured Green (Root/Vine Eruptions) / Staff of Embers',
+                food: 'Sparkling Shroomshake (90 Eitr), Marinated Greens (85 Eitr), Scorching Medley (85 HP)',
+                meads: 'Major Eitr Mead, Lingering Eitr Mead, Fire Resistance Wine',
+                summary: 'Achieves +125% base Eitr regeneration. Staff of the Fractured Green traps entire armies of Charred in suffocating brambles while Dundr unleashes point-blank lightning blasts to drop aerial Valkyries in seconds.',
+                progressionTip: 'Raid Charred Fortresses to gather Ashwood, Gader Cores, and Celestial gems. Upgrade the Galdr Table to craft Dundr, which completely neutralizes the threat of aggressive Ashlands flying enemies.'
+            },
+            {
+                id: 'ashlands-trollstav-commander',
+                biome: 'ashlands',
+                biomeName: 'Ashlands Tier',
+                name: 'Trollstav Magma Summoner',
+                tag: 'Orbital Meteor Strikes & Magma Troll Siege Master',
+                icon: '👹',
+                head: 'Embla Hood (+25% Eitr Regen)',
+                chest: 'Embla Robes (+50% Eitr Regen)',
+                legs: 'Embla Trousers (+50% Eitr Regen)',
+                cape: 'Asksvin Cloak',
+                trinket: 'Megingjord',
+                primaryWeapon: 'Trollstav (Calls down an orbital meteor that summons a Magma Troll)',
+                offhand: 'Staff of Protection (Reinforced Bubble Shield for Troll & player) / Dead Raiser',
+                food: 'Sparkling Shroomshake (90 Eitr), Marinated Greens (85 Eitr), Fiery Svinstew (85 HP to fund summon cost)',
+                meads: 'Major Healing Mead (recovers Trollstav HP sacrifice), Major Eitr Mead, Fire Wine',
+                summary: 'The ultimate siege master. Calling down a Magma Troll levels Charred Fortresses and crushes fortress gates while distracting all surrounding spawns. Protected by your bubble shield, your summons do 100% of the heavy lifting.',
+                progressionTip: 'Collect Molten Cores from Ashlands fortress chests to craft the Trollstav. When sieging a Charred Fortress, cast Trollstav over the outer ramparts to spawn a Magma Troll directly inside to clear the ballistas.'
+            },
+
+            // --- DEEP NORTH TIER (TIER 8 - ENDGAME) ---
+            {
+                id: 'vanguard-striker',
+                biome: 'deep-north',
+                biomeName: 'Deep North Tier',
+                name: 'Vanguard Striker (BiS Generalist)',
+                tag: 'Melee / High Mobility Meta',
+                icon: '⚔️',
+                head: 'Vanguard Hood',
+                chest: 'Vanguard Chestpiece',
+                legs: 'Vanguard Trousers',
+                cape: 'Moose Hide Cape',
+                trinket: 'Neckstabber',
+                primaryWeapon: 'Thunderblood Mace',
+                offhand: 'Nord Buckler / Thunderblood Atgeir',
+                food: 'Seal Meat Soup, Cooked Moose Meat, Baked Poteitr',
+                meads: 'Major Healing Mead, Lingonberry Stamina Infusion, Fire Barleys',
+                summary: 'Combines 102 base armor with net +10% stamina regen, -20% dodge stamina cost, and +10% pierce amplification. Delivers unstoppable melee pacing.',
+                progressionTip: 'Harvest Refined Bloodgold and Nord Pelts from the Frozen Peaks to assemble the Vanguard set for zero movement penalty and supreme stagger combos.'
+            },
+            {
+                id: 'heavy-tank',
+                biome: 'deep-north',
+                biomeName: 'Deep North Tier',
+                name: 'Heavy Protector Tank',
+                tag: 'Frontline Physical Absorption',
+                icon: '🛡️',
+                head: 'Protector Helmet',
+                chest: 'Protector Breastplate',
+                legs: 'Protector Trousers',
+                cape: 'Moose Hide Cape',
+                trinket: 'Megingjord',
+                primaryWeapon: 'Thunderblood Sword',
+                offhand: 'Nord Greatshield',
+                food: 'Seal Meat Soup, Cooked Moose Meat, Smoked Moose Meat',
+                meads: 'Major Healing Mead, Major Stamina Mead, Spirit Resistance',
+                summary: 'Achieves maximum raw physical mitigation (132 armor) and inherent Frost resistance. Accepts heavy movement speed penalty for total structural absorption.',
+                progressionTip: 'Forge heavy Protector plate armor at the Deep North Forge using Bloodgold ingots to absorb the brutal physical sweeps of Kall Fimbulbringer.'
+            },
+            {
+                id: 'stealth-marksman',
+                biome: 'deep-north',
+                biomeName: 'Deep North Tier',
+                name: 'Lox Stealth Marksman',
+                tag: 'Precision Ranged Burst',
+                icon: '🏹',
+                head: 'Lox Fur Hood / Vanguard Hood',
+                chest: 'Vanguard Chest (or Root Harnesk)',
+                legs: 'Vanguard Trousers',
+                cape: 'Moose Hide Cape',
+                trinket: 'Neckstabber',
+                primaryWeapon: 'Thunderblood Bow',
+                offhand: 'Bloodgold Crossbow / Nord Dagger',
+                food: 'Baked Poteitr, Kale Chips, Smoked Moose Meat',
+                meads: 'Medium Stamina Mead, Lingonberry Stamina Infusion',
+                summary: 'Leverages Lox Fur set perks (+15 Bows, +30 Sneak) or Vanguard Pierce amplification (+10%) to deliver massive opening ambush damage.',
+                progressionTip: 'Pair the Thunderblood Bow with northern stealth gear to snipe glacial drakes and ambush high-tier threats before they can close distance.'
+            },
+            {
+                id: 'battle-arcanist',
+                biome: 'deep-north',
+                biomeName: 'Deep North Tier',
+                name: 'Caller Battle Arcanist',
+                tag: 'Eitr Conjuration & Abjuration',
+                icon: '🧙',
+                head: 'Caller Headdress',
+                chest: 'Caller Robes',
+                legs: 'Caller Trousers',
+                cape: 'Cape of the Caller',
+                trinket: 'Witch Crown',
+                primaryWeapon: 'Northern Vengeance Staff',
+                offhand: 'Lightning Strike / Spirit Caller',
+                food: 'Northern Morning Fare, Ashlands Eitr Dish, Deep North Eitr Feast',
+                meads: 'Major Eitr Mead, Major Healing Mead, Lingonberry Infusion',
+                summary: 'Yields a cumulative +160% Eitr Regeneration rate. Cycles reactive energy barriers with Northern Vengeance while calling lightning bursts.',
+                progressionTip: 'Weave Caller vestments using Celestial threads and channel Northern Vengeance for reactive energy wards against Kall’s blizzards.'
+            }
+        ];
+
+        function wrapLabel(label) {
+            if (typeof label === 'string' && label.length > 16) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > 16) {
+                        if (currentLine) lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine ? ' ' : '') + word;
+                    }
+                });
+                if (currentLine) lines.push(currentLine.trim());
+                return lines;
+            }
+            return label;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initBomTabs();
+            initResourceChart();
+            initArmorChart();
+            initBiomeFilter();
+            initBuildTabs();
+            initEnemyMatrix();
+            initDietCalculator();
+            initRoadmap();
+            initCraftingPipelines();
+            initBossHub();
+            initForgeSimulator();
+        });
+
+        function initBomTabs() {
+            const tabsContainer = document.getElementById('bom-biome-tabs');
+            biomeBomData.forEach((b, index) => {
+                const btn = document.createElement('button');
+                btn.className = `px-3.5 py-2 text-xs font-bold rounded-lg transition-all flex items-center space-x-2 ${
+                    index === 0
+                        ? 'bg-nordic-frost text-slate-950 shadow-md'
+                        : 'bg-nordic-bg text-slate-400 hover:text-white hover:bg-slate-800 border border-nordic-cardBorder'
+                }`;
+                btn.innerHTML = `<span>${b.icon}</span><span>${b.nameShort || b.name}</span>`;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#bom-biome-tabs button').forEach(el => {
+                        el.className = 'px-3.5 py-2 text-xs font-bold rounded-lg transition-all flex items-center space-x-2 bg-nordic-bg text-slate-400 hover:text-white hover:bg-slate-800 border border-nordic-cardBorder';
+                    });
+                    btn.className = 'px-3.5 py-2 text-xs font-bold rounded-lg transition-all flex items-center space-x-2 bg-nordic-frost text-slate-950 shadow-md';
+                    document.getElementById('selected-biome-badge').innerText = `Active Biome: ${b.name}`;
+                    renderBomDetail(b);
+                });
+                tabsContainer.appendChild(btn);
+            });
+            renderBomDetail(biomeBomData[0]);
+        }
+
+        function renderBomDetail(b) {
+            const container = document.getElementById('bom-detail-container');
+            
+            let stationsHtml = b.stations.map(s => `
+                <div class="bg-nordic-card p-3 rounded-lg border border-nordic-cardBorder flex flex-col justify-between space-y-1">
+                    <span class="font-bold text-white text-xs flex items-center justify-between">
+                        <span>🏗️ ${s.name}</span>
+                    </span>
+                    <span class="text-[11px] text-nordic-gold font-mono">${s.cost}</span>
+                </div>
+            `).join('');
+
+            let gearHtml = b.gear.map(g => `
+                <div class="bg-nordic-card p-3 rounded-lg border border-nordic-cardBorder flex flex-col justify-between space-y-1">
+                    <span class="font-bold text-nordic-frost text-xs flex items-center justify-between">
+                        <span>⚔️ ${g.name}</span>
+                    </span>
+                    <span class="text-[11px] text-slate-300 font-mono">${g.cost}</span>
+                </div>
+            `).join('');
+
+            let bomHtml = b.bom.map(item => `
+                <div class="bg-nordic-bg/80 p-3 rounded-lg border border-nordic-cardBorder space-y-1">
+                    <span class="text-[11px] font-bold text-nordic-emerald uppercase tracking-wider block">${item.cat}</span>
+                    <span class="text-xs text-white font-medium block">${item.items}</span>
+                </div>
+            `).join('');
+
+            let foodHtml = b.foods ? b.foods.map(f => `
+                <div class="bg-nordic-card p-3 rounded-lg border border-nordic-cardBorder flex flex-col justify-between space-y-1">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-white text-xs">🍲 ${f.name}</span>
+                        <span class="text-[10px] font-bold text-nordic-emerald bg-nordic-emerald/10 px-1.5 py-0.5 rounded border border-nordic-emerald/30">${f.stats}</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-mono">Requires: ${f.ingredients}</span>
+                </div>
+            `).join('') : '';
+
+            container.innerHTML = `
+                <div class="bg-nordic-bg/60 border border-nordic-cardBorder p-4 rounded-xl space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-nordic-cardBorder pb-2 gap-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">${b.icon}</span>
+                            <h3 class="text-lg font-bold text-white">${b.name} Mandatory Infrastructure, Armaments & Foods</h3>
+                        </div>
+                        <span class="text-xs font-bold text-nordic-gold bg-nordic-gold/10 px-3 py-1 rounded border border-nordic-gold/30">
+                            Metal Quota: ${b.quotaSummary}
+                        </span>
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Required Crafting Stations & Extensions</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">${stationsHtml}</div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Optimal BiS Gear & Tool List</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">${gearHtml}</div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold text-nordic-emerald uppercase tracking-wider mb-2">Total Biome Bill of Materials (BOM) Quota</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">${bomHtml}</div>
+                        </div>
+
+                        ${b.foods ? `
+                        <div>
+                            <h4 class="text-xs font-bold text-nordic-frost uppercase tracking-wider mb-2">Most Efficient Food Combinations (Max Stat / Min Grind)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">${foodHtml}</div>
+                        </div>
+                        ` : ''}
+
+                        <div class="bg-nordic-gold/10 border border-nordic-gold/30 p-3 rounded-lg text-xs text-nordic-gold flex items-center space-x-2">
+                            <span class="text-base">💡</span>
+                            <span><strong>Efficiency Advice:</strong> ${b.metaTip}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initResourceChart() {
+            const ctx = document.getElementById('resourceChart').getContext('2d');
+
+            const rawLabels = [
+                'Meadows/Forest (Bronze)',
+                'Swamp (Iron)',
+                'Mountains (Silver)',
+                'Plains (Blackmetal)',
+                'Mistlands (Eitr)',
+                'Ashlands (Flametal)',
+                'Deep North (Bloodgold)'
+            ];
+
+            const formattedLabels = rawLabels.map(wrapLabel);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: formattedLabels,
+                    datasets: [
+                        {
+                            label: 'Primary Metals / Eitr Quota (Units)',
+                            data: [33, 130, 110, 90, 45, 80, 40],
+                            backgroundColor: '#f59e0b',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Secondary Catalysts / Woods (Units)',
+                            data: [133, 67, 48, 165, 120, 70, 68],
+                            backgroundColor: '#38bdf8',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#94a3b8', font: { size: 11 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                        return label.join(' ');
+                                    } else {
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#94a3b8', font: { size: 10 }, maxRotation: 0, minRotation: 0 },
+                            grid: { color: '#334155' }
+                        },
+                        y: {
+                            ticks: { color: '#94a3b8', font: { size: 10 } },
+                            grid: { color: '#334155' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initArmorChart() {
+            const ctx = document.getElementById('armorChart').getContext('2d');
+
+            const rawLabels = [
+                'Troll Leather (Forest)',
+                'Root Harnesk (Swamp)',
+                'Iron Scale (Swamp)',
+                'Fenris Agility (Mountain)',
+                'Padded Armor (Plains)',
+                'Carapace Heavy (Mistlands)',
+                'Flametal Heavy (Ashlands)',
+                'Protector Heavy (Deep North)',
+                'Vanguard Hybrid (Deep North)'
+            ];
+
+            const formattedLabels = rawLabels.map(wrapLabel);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: formattedLabels,
+                    datasets: [
+                        {
+                            label: 'Armor Class (Full Upgraded Set)',
+                            data: [36, 42, 60, 48, 96, 108, 118, 132, 102],
+                            backgroundColor: '#38bdf8',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Speed Tax (% Run Penalty)',
+                            data: [0, 2, 10, -9, 10, 10, 10, 10, 0],
+                            backgroundColor: '#ef4444',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#94a3b8', font: { size: 11 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    return Array.isArray(label) ? label.join(' ') : label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#94a3b8', font: { size: 10 }, maxRotation: 0, minRotation: 0 },
+                            grid: { color: '#334155' }
+                        },
+                        y: {
+                            ticks: { color: '#94a3b8', font: { size: 10 } },
+                            grid: { color: '#334155' }
+                        }
+                    }
+                }
+            });
+        }
+
+        let currentBiomeFilter = 'mistlands';
+
+        function initBiomeFilter() {
+            const filterBar = document.getElementById('biome-filter-bar');
+            if (!filterBar) return;
+            const filters = [
+                { id: 'mistlands', name: 'Mistlands (Tier 6)', icon: '🌫️' },
+                { id: 'ashlands', name: 'Ashlands (Tier 7)', icon: '🌋' },
+                { id: 'deep-north', name: 'Deep North (Tier 8)', icon: '❄️' },
+                { id: 'all', name: 'All Builds (12)', icon: '✨' }
+            ];
+            filterBar.innerHTML = '';
+            filters.forEach(f => {
+                const btn = document.createElement('button');
+                btn.className = `px-3 py-1.5 text-xs font-bold rounded-md transition-all flex items-center space-x-1.5 ${
+                    f.id === currentBiomeFilter
+                        ? 'bg-nordic-frost text-slate-950 shadow-sm'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                }`;
+                btn.innerHTML = `<span>${f.icon}</span><span>${f.name}</span>`;
+                btn.addEventListener('click', () => {
+                    currentBiomeFilter = f.id;
+                    initBiomeFilter();
+                    initBuildTabs();
+                });
+                filterBar.appendChild(btn);
+            });
+        }
+
+        function initBuildTabs() {
+            const tabsContainer = document.getElementById('build-tabs');
+            tabsContainer.innerHTML = '';
+            const filteredBuilds = currentBiomeFilter === 'all'
+                ? buildData
+                : buildData.filter(b => b.biome === currentBiomeFilter);
+
+            filteredBuilds.forEach((build, index) => {
+                const btn = document.createElement('button');
+                btn.className = `px-3.5 py-2 text-xs font-bold rounded-lg transition-all flex items-center space-x-2 ${
+                    index === 0
+                        ? 'bg-nordic-frost text-slate-950 shadow-md'
+                        : 'bg-nordic-bg text-slate-400 hover:text-white hover:bg-slate-800 border border-nordic-cardBorder'
+                }`;
+                btn.innerHTML = `<span>${build.icon}</span><span>${build.name}</span>`;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#build-tabs button').forEach(el => {
+                        el.className = 'px-3.5 py-2 text-xs font-bold rounded-lg transition-all flex items-center space-x-2 bg-nordic-bg text-slate-400 hover:text-white hover:bg-slate-800 border border-nordic-cardBorder';
+                    });
+                    btn.className = 'px-3.5 py-2 text-xs font-bold rounded-lg transition-all flex items-center space-x-2 bg-nordic-frost text-slate-950 shadow-md';
+                    renderBuildDetail(build);
+                });
+                tabsContainer.appendChild(btn);
+            });
+            if (filteredBuilds.length > 0) {
+                renderBuildDetail(filteredBuilds[0]);
+            }
+        }
+
+        function renderBuildDetail(build) {
+            const container = document.getElementById('build-detail-container');
+            const biomeBadge = build.biome === 'mistlands'
+                ? '<span class="text-xs font-bold px-2 py-0.5 rounded bg-purple-950/80 border border-purple-700/80 text-purple-300">🌫️ Mistlands Tier</span>'
+                : build.biome === 'ashlands'
+                ? '<span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-950/80 border border-amber-600/80 text-amber-300">🌋 Ashlands Tier</span>'
+                : '<span class="text-xs font-bold px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-600/80 text-cyan-300">❄️ Deep North Tier</span>';
+
+            container.innerHTML = `
+                <div class="bg-nordic-bg/70 border border-nordic-cardBorder rounded-lg p-4 space-y-3">
+                    <div class="flex justify-between items-center border-b border-nordic-cardBorder pb-2">
+                        <span class="text-xs font-bold text-nordic-frost uppercase">Armor & Gear Allocation</span>
+                        <div>${biomeBadge}</div>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between p-2 bg-nordic-card rounded"><span class="text-slate-400">Head:</span> <span class="font-bold text-white">${build.head}</span></div>
+                        <div class="flex justify-between p-2 bg-nordic-card rounded"><span class="text-slate-400">Chest:</span> <span class="font-bold text-white">${build.chest}</span></div>
+                        <div class="flex justify-between p-2 bg-nordic-card rounded"><span class="text-slate-400">Legs:</span> <span class="font-bold text-white">${build.legs}</span></div>
+                        <div class="flex justify-between p-2 bg-nordic-card rounded"><span class="text-slate-400">Cape:</span> <span class="font-bold text-white">${build.cape}</span></div>
+                        <div class="flex justify-between p-2 bg-nordic-card rounded"><span class="text-slate-400">Trinket:</span> <span class="font-bold text-nordic-gold">${build.trinket}</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-nordic-bg/70 border border-nordic-cardBorder rounded-lg p-4 space-y-3">
+                    <div class="flex justify-between items-center border-b border-nordic-cardBorder pb-2">
+                        <span class="text-xs font-bold text-nordic-gold uppercase">Armament & Shield</span>
+                        <span class="text-xs text-slate-400">${build.tag}</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2 bg-nordic-card rounded"><span class="text-slate-400 block mb-0.5">Primary Weapon:</span> <span class="font-bold text-nordic-gold">${build.primaryWeapon}</span></div>
+                        <div class="p-2 bg-nordic-card rounded"><span class="text-slate-400 block mb-0.5">Offhand / Alternative:</span> <span class="font-bold text-white">${build.offhand}</span></div>
+                        <div class="p-2 bg-nordic-card rounded"><span class="text-slate-400 block mb-0.5">Key Consumables:</span> <span class="font-semibold text-slate-300">${build.meads}</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-nordic-bg/70 border border-nordic-cardBorder rounded-lg p-4 space-y-3">
+                    <div class="flex justify-between items-center border-b border-nordic-cardBorder pb-2">
+                        <span class="text-xs font-bold text-nordic-emerald uppercase">Nutrition & Strategy</span>
+                        <span class="text-xs text-slate-400">Diet Setup</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2 bg-nordic-card rounded"><span class="text-slate-400 block mb-0.5">Food Combination:</span> <span class="font-semibold text-nordic-emerald">${build.food}</span></div>
+                        <div class="p-2.5 bg-nordic-card/80 border border-nordic-cardBorder rounded text-slate-300 leading-relaxed text-[11px]">
+                            ${build.summary}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 bg-gradient-to-r from-nordic-card via-nordic-card to-nordic-bg border border-nordic-gold/40 rounded-lg p-4 shadow-md">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div class="space-y-1">
+                            <span class="text-xs uppercase font-extrabold text-nordic-gold tracking-wider flex items-center gap-1.5">
+                                <span>🗺️</span> Where to Go From Here: Crafting Milestones & Next Steps
+                            </span>
+                            <p class="text-xs text-slate-200 leading-relaxed">
+                                ${build.progressionTip || build.summary}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // 1. BESTIARY & ENEMY COUNTER MATRIX DATA
+        // ==========================================
+        const enemyBestiaryData = [
+            // MISTLANDS
+            {
+                id: 'seeker',
+                name: 'Seeker',
+                biome: 'mistlands',
+                biomeName: 'Mistlands',
+                threat: 'High',
+                threatClass: 'bg-amber-950/80 border-amber-600/80 text-amber-300',
+                icon: '🦗',
+                hp: '200 HP (1★: 400 | 2★: 600)',
+                attack: 'Slash & Blunt (70-90 Dmg) • Gliding Airborne Dive',
+                weaknesses: ['Frost (1.5x Slow)', 'Lightning (1.0x)', 'Rear Abdomen (1.0x Full)'],
+                resistances: ['Physical (0.5x to Blunt/Slash/Pierce on front)', 'Spirit (Immune)'],
+                counterWeapon: 'Mistwalker (Frost Chill Slow) / Krom / Carapace Buckler',
+                tactics: 'Parry the frontal claw lunge with a Carapace Buckler (x2.5 stagger multiplier). While staggered, roll behind to target the soft rear abdomen which ignores the 50% frontal carapace armor resistance.',
+                lethalWarning: 'Never fight Seekers near cliff edges without the Feather Cape; their knockback sends players plummeting to instant fall deaths.'
+            },
+            {
+                id: 'seeker-soldier',
+                name: 'Seeker Soldier',
+                biome: 'mistlands',
+                biomeName: 'Mistlands',
+                threat: 'Extreme',
+                threatClass: 'bg-red-950/80 border-red-600/80 text-red-300',
+                icon: '🦂',
+                hp: '1,500 HP (1★: 3,000 | 2★: 4,500)',
+                attack: 'Triple Headbutt (100 Blunt) & Ground Wave Stomp',
+                weaknesses: ['Rear Abdomen Weakpoint (1.5x - 2.0x!)', 'Frost (Slows Stomp Animations)'],
+                resistances: ['Frontal Plate: 0.5x Blunt/Slash/Pierce', 'Fire (Resistant)', 'Spirit (Immune)'],
+                counterWeapon: 'Demolisher (Radial Stagger) / Spine Snap / Frostner',
+                tactics: 'Do NOT try to face-tank or parry its heavy stomp. Roll forward THROUGH its headbutt attack, sprint behind it, and strike the glowing rear abdomen with Mistwalker or Frostner for massive critical multipliers.',
+                lethalWarning: 'The 3-stage ground stomp has a huge AoE radius that shatters player stagger meters instantly. Maintain distance or jump with Feather Cape.'
+            },
+            {
+                id: 'gjall',
+                name: 'Gjall (Airborne Zeppelin)',
+                biome: 'mistlands',
+                biomeName: 'Mistlands',
+                threat: 'Extreme',
+                threatClass: 'bg-red-950/80 border-red-600/80 text-red-300',
+                icon: '🎈',
+                hp: '1,500 HP',
+                attack: 'Dual Explosive Fire Mortars (Burn DoT) • Spawns 2-4 Ticks',
+                weaknesses: ['Glowing Underbelly Sac (2.0x Critical Pierce/Slash!)'],
+                resistances: ['Carapace Shell: 0.5x Physical', 'Fire (Resistant)', 'Spirit (Immune)'],
+                counterWeapon: 'Arbalest / Spine Snap (Carapace or Needle Bolts) + Fire Barley Wine',
+                tactics: 'Keep moving diagonally when you hear the fog horn whistle. Aim your crossbow or bow directly upward into the glowing yellow underbelly sac. Two direct hits deal over 600 damage and stagger it.',
+                lethalWarning: '⚠️ FATAL COMBO: Root Harnesk has +50% Fire Weakness and Feather Cape has +20%. If hit by Gjall firebombs without Fire Resistance Barley Wine, you will take 200+ burning damage and die in 2 seconds!'
+            },
+            {
+                id: 'tick',
+                name: 'Tick',
+                biome: 'mistlands',
+                biomeName: 'Mistlands',
+                threat: 'Moderate',
+                threatClass: 'bg-slate-800 border-slate-600 text-slate-300',
+                icon: '🪲',
+                hp: '50 HP',
+                attack: 'Blood Drain Latch (Continuous True Damage)',
+                weaknesses: ['Blunt (1.0x)', 'Pierce (1.0x)', 'Frost', 'Fire'],
+                resistances: ['Spirit (Immune)'],
+                counterWeapon: 'Demolisher / Iron Sledge (Ground Slam) / Dodge Roll',
+                tactics: 'DODGE ROLLING immediately shakes off all attached ticks from your back! A single ground slam from the Demolisher kills every tick within a 6-meter radius instantly.',
+                lethalWarning: 'Allowing 4+ ticks to latch onto your back while fighting a Seeker will drain your entire health pool in under 4 seconds.'
+            },
+            {
+                id: 'dvergr-mage',
+                name: 'Dvergr Fire & Ice Mages',
+                biome: 'mistlands',
+                biomeName: 'Mistlands',
+                threat: 'High',
+                threatClass: 'bg-amber-950/80 border-amber-600/80 text-amber-300',
+                icon: '🧙‍♂️',
+                hp: '350 - 500 HP',
+                attack: 'Flamethrower Jet (Fire DoT) / Glacial Ice Shards / Healing Wards',
+                weaknesses: ['Fire Mages weak to Frost', 'Ice Mages weak to Fire', 'Sneak Arbalest (3.0x)'],
+                resistances: ['Fire Mages resist Fire', 'Ice Mages resist Frost'],
+                counterWeapon: 'Arbalest Stealth Headshot / Staff of Protection / Carapace Armor',
+                tactics: 'If raiding a Dvergr Outpost for their Dvergr Extractor, stand outside and use the Demolisher through the doors to damage them safely without taking direct elemental blast lines.',
+                lethalWarning: 'Never wear Root Harnesk against Dvergr Fire Mages. Their sustained flamethrower beam will incinerate you in less than 1.5 seconds.'
+            },
+            {
+                id: 'the-queen',
+                name: 'The Queen (Mistlands Boss)',
+                biome: 'mistlands',
+                biomeName: 'Mistlands',
+                threat: 'Apex Boss',
+                threatClass: 'bg-purple-950/80 border-purple-600/80 text-purple-300',
+                icon: '👑',
+                hp: '12,500 HP',
+                attack: 'Burrow Teleport, Scythe Lunges, Bile Wave & Infinite Brood Summons',
+                weaknesses: ['Lightning (1.0x Full Shock)', 'Pierce (1.0x)', 'Slash (1.0x)'],
+                resistances: ['Blunt (0.5x)', 'Frost (0.5x)', 'Fire (0.5x)', 'Spirit (Immune)'],
+                counterWeapon: 'Staff of Protection (Bubble Shield) + Mistwalker / Demolisher',
+                tactics: 'Keep the 700 HP Bubble Shield active 100% of the time. When she summons waves of Seekers and Broodlings, use Demolisher shockwaves or Staff of Embers to clear adds while bottlenecking on the dungeon stairs.',
+                lethalWarning: 'Fighting on the open floor during add waves leads to surround-death. Retreat to the dungeon entrance foyer to fight her in a controlled bottleneck.'
+            },
+
+            // ASHLANDS
+            {
+                id: 'charred-legion',
+                name: 'Charred Warrior, Archer & Warlock',
+                biome: 'ashlands',
+                biomeName: 'Ashlands',
+                threat: 'High',
+                threatClass: 'bg-amber-950/80 border-amber-600/80 text-amber-300',
+                icon: '💀',
+                hp: '250 - 450 HP',
+                attack: 'Flaming Greatswords, Fire Rain, Necrotic Summoning & Warlock Shields',
+                weaknesses: ['Blunt (1.5x!)', 'Spirit (1.5x!)', 'Frost (1.5x!)'],
+                resistances: ['Pierce (0.5x)', 'Fire (Immune / 0.1x)'],
+                counterWeapon: 'Frostner / Mistwalker / Bloodstone Blunt Maces / Silver Weapons',
+                tactics: 'Always rush the Warlock first! Warlocks summon endless skeleton reinforcements and grant defensive shields to nearby warriors. Blunt weapons and Frost damage shatter them effortlessly.',
+                lethalWarning: 'Pierce bows with fire arrows are completely useless here. Do not engage large hordes without active Shield Generator cover.'
+            },
+            {
+                id: 'fallen-valkyrie',
+                name: 'Fallen Valkyrie',
+                biome: 'ashlands',
+                biomeName: 'Ashlands',
+                threat: 'Extreme',
+                threatClass: 'bg-red-950/80 border-red-600/80 text-red-300',
+                icon: '🦅',
+                hp: '1,500 HP',
+                attack: 'Aerial Talon Spin Dive, Necrotic Fire Vomit & Ice Caltrops',
+                weaknesses: ['Spirit (1.25x)', 'Pierce (1.0x)'],
+                resistances: ['Fire (Resistant)', 'Frost (Resistant)'],
+                counterWeapon: 'Dundr (Eitr Shotgun) / Ripper Arbalest / Needle or Carapace Bolts',
+                tactics: 'Listen for her distinctive shrill shriek. When she dives with spinning talons, dodge roll sideways right before impact. Once she lands to spew fire, unload with Dundr lightning bursts or heavy arbalest bolts.',
+                lethalWarning: 'Her fire vomit leaves persistent necrotic flames that bypass standard physical armor and can destroy wooden outpost portals instantly.'
+            },
+            {
+                id: 'morgen',
+                name: 'Morgen & Sinmara',
+                biome: 'ashlands',
+                biomeName: 'Ashlands',
+                threat: 'Extreme',
+                threatClass: 'bg-red-950/80 border-red-600/80 text-red-300',
+                icon: '🧌',
+                hp: '1,600 HP (Sinmara: 2,400 HP)',
+                attack: 'Rolling Boulder Charge, Maw Clamp & Radial Arm Swipes',
+                weaknesses: ['Slash (1.0x)', 'Spirit (1.25x)'],
+                resistances: ['Blunt (0.5x)', 'Pierce (0.5x)', 'Fire (Resistant)'],
+                counterWeapon: 'Slayer (2H Flametal Greatsword) / Trollstav Summon / Mistwalker',
+                tactics: 'The Morgen will curl into a rolling ball that knocks down stone ruins. Time your dodge roll forward as it approaches to pass through the hitbox cleanly. Summon a Magma Troll with the Trollstav to tank its aggro.',
+                lethalWarning: 'Never get cornered against lava beds. Morgen knockback carries massive displacement that will launch you directly into boiling magma.'
+            },
+            {
+                id: 'asksvin',
+                name: 'Asksvin (Reptilian Pack Hunter)',
+                biome: 'ashlands',
+                biomeName: 'Ashlands',
+                threat: 'High',
+                threatClass: 'bg-amber-950/80 border-amber-600/80 text-amber-300',
+                icon: '🦎',
+                hp: '450 HP (Fast Pack Spawns)',
+                attack: 'High-Velocity Pounce, Crushing Bite (Physical Slash)',
+                weaknesses: ['Frost (1.5x Freeze-Lock!)', 'Pierce (1.0x)'],
+                resistances: ['Fire (Resistant)'],
+                counterWeapon: 'Frost Arrows / Mistwalker / Frostner / Asksvin Saddle (Tameable!)',
+                tactics: 'Asksvins run faster than players. Hit them with Frost damage immediately to reduce their sprint speed by 50%. You can tame them by digging an earthen pit and feeding them Vineberries or Smoke Puffs.',
+                lethalWarning: 'Do not sprint across ash plains on low stamina. If a pack of 3 Asksvins catches you without stamina to roll, they will stunlock you to death.'
+            },
+            {
+                id: 'fader',
+                name: 'Fader (Ashlands Boss - Emerald Dragon)',
+                biome: 'ashlands',
+                biomeName: 'Ashlands',
+                threat: 'Apex Boss',
+                threatClass: 'bg-purple-950/80 border-purple-600/80 text-purple-300',
+                icon: '🐲',
+                hp: '17,500 HP',
+                attack: 'Emerald Meteor Cascade, Green Dragon Breath, Ground Spines & Necrotic Flame',
+                weaknesses: ['Lightning (1.0x Shock & Stagger)', 'Slash (1.0x)', 'Pierce (1.0x)'],
+                resistances: ['Fire (Immune)', 'Frost (Resistant)', 'Spirit (Immune)'],
+                counterWeapon: 'Lightning Berserkir Dual Axes (Iolite Gem) / Dundr / Trollstav',
+                tactics: 'Summon Magma Trolls using the Trollstav; Fader will waste dragon breath and meteor attacks on the trolls while your team flanks its hind legs with Lightning-infused Flametal weapons.',
+                lethalWarning: 'Never stand in the green flame tracks left by Fader’s breath. This necrotic flame ticks for rapid true damage that bypasses Fire Wine.'
+            },
+
+            // DEEP NORTH
+            {
+                id: 'kall',
+                name: 'Kall Fimbulbringer (Deep North Boss)',
+                biome: 'deep-north',
+                biomeName: 'Deep North',
+                threat: 'Apex Boss',
+                threatClass: 'bg-cyan-950/80 border-cyan-600/80 text-cyan-300',
+                icon: '❄️',
+                hp: '22,000 HP',
+                attack: 'Glacial Sweeps, Ground-Shattering Ice Wave, Blizzard Whiteout',
+                weaknesses: ['Lightning (1.5x Stagger Vulnerability)', 'Blunt (1.25x)'],
+                resistances: ['Frost (Immune)', 'Spirit (Immune)', 'Fire (0.5x Melt Barrier)'],
+                counterWeapon: 'Thunderblood Mace / Nord Buckler / Grappling Hook',
+                tactics: 'Parry his sweeping ice hammer with the Nord Buckler and punish recovery frames with Thunderblood Mace combos. Use the Grappling Hook to latch onto pillars when the floor collapses.',
+                lethalWarning: 'Attempting to use Frost staves or frost weapons is 100% ineffective. Whiteout blizzard requires thermal heat sources.'
+            }
+        ];
+
+        // ==========================================
+        // 2. DIET CALCULATOR DATA & ENGINE
+        // ==========================================
+        const dietFoodsDatabase = [
+            // Mistlands Foods
+            { id: 'misthare-supreme', name: 'Misthare Supreme', biome: 'mistlands', type: 'hp', hp: 85, stam: 28, eitr: 0, regen: 5, duration: 25, badge: 'HP Food', ingredients: { 'Misthare Meat': 1, 'Jotun Puffs': 3, 'Carrots': 2 } },
+            { id: 'meat-platter', name: 'Meat Platter', biome: 'mistlands', type: 'hp', hp: 80, stam: 26, eitr: 0, regen: 4, duration: 25, badge: 'HP Food', ingredients: { 'Seeker Meat': 1, 'Lox Meat': 1, 'Hare Meat': 1 } },
+            { id: 'honey-glazed-chicken', name: 'Honey Glazed Chicken', biome: 'mistlands', type: 'hp', hp: 85, stam: 28, eitr: 0, regen: 5, duration: 25, badge: 'HP Food', ingredients: { 'Chicken Meat': 1, 'Honey': 3, 'Jotun Puffs': 2 } },
+            { id: 'salad', name: 'Salad', biome: 'mistlands', type: 'stam', hp: 26, stam: 80, eitr: 0, regen: 3, duration: 25, badge: 'Stamina Food', ingredients: { 'Jotun Puffs': 1, 'Onions': 1, 'Cloudberries': 1 } }, // 3 yielded per 3/3/3 craft
+            { id: 'mushroom-omelette', name: 'Mushroom Omelette', biome: 'mistlands', type: 'stam', hp: 28, stam: 85, eitr: 0, regen: 3, duration: 25, badge: 'Stamina Food', ingredients: { 'Eggs': 3, 'Jotun Puffs': 3 } },
+            { id: 'fish-n-bread', name: 'Fish n\' Bread', biome: 'mistlands', type: 'stam', hp: 30, stam: 90, eitr: 0, regen: 3, duration: 30, badge: 'Stamina Food', ingredients: { 'Anglerfish': 2, 'Bread Dough': 2 } },
+            { id: 'yggdrasil-porridge', name: 'Yggdrasil Porridge', biome: 'mistlands', type: 'eitr', hp: 27, stam: 13, eitr: 80, regen: 3, duration: 25, badge: 'Eitr Magic', ingredients: { 'Sap': 4, 'Barley': 3, 'Royal Jelly': 2 } },
+            { id: 'stuffed-mushroom', name: 'Stuffed Mushroom', biome: 'mistlands', type: 'eitr', hp: 25, stam: 12, eitr: 75, regen: 3, duration: 25, badge: 'Eitr Magic', ingredients: { 'Magecap': 3, 'Blood Clot': 1, 'Turnips': 2 } },
+            { id: 'seeker-aspic', name: 'Seeker Aspic', biome: 'mistlands', type: 'eitr', hp: 28, stam: 14, eitr: 85, regen: 3, duration: 25, badge: 'Eitr Magic', ingredients: { 'Seeker Meat': 2, 'Magecap': 2, 'Royal Jelly': 2 } },
+
+            // Ashlands Foods
+            { id: 'fiery-svinstew', name: 'Fiery Svinstew', biome: 'ashlands', type: 'hp', hp: 85, stam: 28, eitr: 0, regen: 5, duration: 25, badge: 'HP Food', ingredients: { 'Asksvin Meat': 3, 'Fiddlehead': 3, 'Smoke Puff': 3 } },
+            { id: 'mashed-meat', name: 'Mashed Meat & Marrow', biome: 'ashlands', type: 'hp', hp: 87, stam: 29, eitr: 0, regen: 5, duration: 25, badge: 'HP Food', ingredients: { 'Asksvin Meat': 1, 'Bone Marrow': 1, 'Fiddlehead': 2 } },
+            { id: 'meat-broth', name: 'Meat Broth', biome: 'ashlands', type: 'hp', hp: 90, stam: 30, eitr: 0, regen: 5, duration: 30, badge: 'HP Food', ingredients: { 'Bone Marrow': 2, 'Asksvin Meat': 1, 'Fiddlehead': 2 } },
+            { id: 'piquant-pie', name: 'Piquant Pie', biome: 'ashlands', type: 'stam', hp: 28, stam: 85, eitr: 0, regen: 3, duration: 25, badge: 'Stamina Food', ingredients: { 'Asksvin Meat': 2, 'Cloudberries': 2, 'Barley Flour': 2 } },
+            { id: 'sizzling-berry-jam', name: 'Sizzling Berry Jam', biome: 'ashlands', type: 'stam', hp: 28, stam: 85, eitr: 0, regen: 3, duration: 25, badge: 'Stamina Food', ingredients: { 'Vineberry': 3, 'Cloudberries': 2, 'Honey': 1 } },
+            { id: 'spicy-marmalade', name: 'Spicy Marmalade', biome: 'ashlands', type: 'stam', hp: 30, stam: 90, eitr: 0, regen: 3, duration: 30, badge: 'Stamina Food', ingredients: { 'Vineberry': 3, 'Honey': 1, 'Fiddlehead': 1 } },
+            { id: 'sparkling-shroomshake', name: 'Sparkling Shroomshake', biome: 'ashlands', type: 'eitr', hp: 28, stam: 14, eitr: 90, regen: 3, duration: 25, badge: 'Eitr Magic', ingredients: { 'Smoke Puff': 3, 'Fiddlehead': 3, 'Vineberry': 1 } },
+            { id: 'scorching-sizzle', name: 'Scorching Sizzle', biome: 'ashlands', type: 'eitr', hp: 30, stam: 15, eitr: 95, regen: 3, duration: 30, badge: 'Eitr Magic', ingredients: { 'Smoke Puff': 2, 'Magma Trout': 2, 'Vineberry': 1 } }
+        ];
+
+        let selectedDietSlots = ['misthare-supreme', 'meat-platter', 'salad'];
+
+        // ==========================================
+        // 3. STEP-BY-STEP PROGRESSION ROADMAP DATA
+        // ==========================================
+        const roadmapProgressionData = {
+            'mistlands': {
+                tierTitle: 'Mistlands (Tier 6) Chronological Progression',
+                steps: [
+                    {
+                        num: 1,
+                        title: 'The Wisp Fountain & Wisplight Assembly',
+                        prereq: 'Defeat Yagluth (Plains Boss) for Torn Spirits',
+                        instructions: 'Construct the Wisp Fountain (1 Torn Spirit + 10 Stone). At night, catch hovering glowing Wisps. Craft the Wisplight accessory (1 Wisp + 1 Silver) to push back the impenetrable purple mist.',
+                        unlocks: ['Wisplight (360° Demisting Aura)', 'Wisp Torches'],
+                        tip: 'Place Wisp Torches along sheer crags. Hostile Seekers do NOT prioritize attacking unprovoked Wisp Torches.'
+                    },
+                    {
+                        num: 2,
+                        title: 'Fortified Crag Beachhead & Portal Spire',
+                        prereq: 'Wisplight, Fire Resistance Barley Wine, Rested Buff 20m+',
+                        instructions: 'Enter Mistlands on the border of a safe Plains or Black Forest biome. Construct an elevated portal base on top of an ancient stone spire or viaduct arch high above Seeker patrol paths.',
+                        unlocks: ['Secure Resupply Outpost', 'Safe Fallback Portal'],
+                        tip: 'Seekers and Gjalls cannot path up sheer stone arches. Secure portals on stone arches with iron wood beams.'
+                    },
+                    {
+                        num: 3,
+                        title: 'Dvergr Extractor Heist & Ancient Root Sap',
+                        prereq: 'Locate Dvergr Rogue Outpost / Excavation Tower',
+                        instructions: 'Acquire the Dvergr Extractor from the blue wooden crates inside Dvergr towers. Find pulsating green Ancient Roots. Craft the Sap Extractor (10 Yggdrasil Wood, 5 Black Metal, 1 Dvergr Extractor) on the root.',
+                        unlocks: ['Continuous Liquid Sap Flow', 'Prerequisite for Refined Eitr'],
+                        tip: 'Do not hit Dvergr directly; let Seekers or a Gjall attack the outpost to destroy the ward and kill the Dvergr for you.'
+                    },
+                    {
+                        num: 4,
+                        title: 'Infested Mines Raiding & Black Cores (Need 5-10)',
+                        prereq: 'Demolisher / Iron Sledge, Poison / Fire Resistance Wine',
+                        instructions: 'Delve into subterranean Infested Mines found in basement stairs beneath ancient stone ruins. Collect 5 Black Cores, Sealbreaker Fragments, and Royal Jelly while avoiding trap pits.',
+                        unlocks: ['Black Cores (Tier 6 Industrial Catalyst)', 'Sealbreaker Fragments'],
+                        tip: 'Use Demolisher ground slams against closed dungeon doors; the shockwave damages and staggers Seekers and Ticks through walls!'
+                    },
+                    {
+                        num: 5,
+                        title: 'Construct the Tier 6 Processing Core',
+                        prereq: '5 Black Cores, Black Marble, Yggdrasil Wood, Liquid Sap',
+                        instructions: 'Build the Black Forge (10 Black Marble, 10 Yggdrasil Wood, 5 Black Cores) and Eitr Refinery (20 Black Marble, 5 Black Metal, 10 Yggdrasil Wood, 5 Cores, 3 Sap). Shield the refinery with Black Marble to absorb spark damage.',
+                        unlocks: ['Refined Eitr Production', 'Galdr Table & Black Forge Extensions'],
+                        tip: 'Eitr Refinery shoots radioactive sparks that damage wooden structures. Surround the refinery with a Black Marble cage.'
+                    },
+                    {
+                        num: 6,
+                        title: 'Agricultural Revolution (Jotun Puffs, Magecap, Chickens)',
+                        prereq: 'Cultivator, Eggs purchased from Trader Haldor',
+                        instructions: 'Cultivate wild Jotun Puffs and Magecaps in moist Mistlands soil (they only grow in Mistlands!). Build an enclosed heat-insulated chicken coop with Boar/Lox fire pits to hatch infinite chicken eggs.',
+                        unlocks: ['Salad (80 Stamina)', 'Misthare Supreme', 'Chicken & Eggs'],
+                        tip: 'Keep chickens enclosed inside stone walls; bats and drakes will slaughter entire coops during raid events.'
+                    },
+                    {
+                        num: 7,
+                        title: 'Craft Mandatory Mobility: Feather Cape & Mistwalker',
+                        prereq: 'Refined Eitr, Scale Hide, Feathers, Fine Wood, Iron',
+                        instructions: 'Forge the Feather Cape (10 Feathers, 5 Scale Hide, 20 Refined Eitr) at the Galdr Table immediately to eliminate vertical fall damage. Forge Mistwalker (Frost sword) to inflict perpetual chill slow on Seekers.',
+                        unlocks: ['Zero Fall Damage Flight', 'Mistwalker Perma-Slow CC'],
+                        tip: 'Feather Cape allows you to leap off sheer 100-meter cliffs safely and escape Seeker swarms in 1 second.'
+                    },
+                    {
+                        num: 8,
+                        title: 'High-Tier Arsenal & Magic Infusion',
+                        prereq: 'Blood Clots, Freeze Glands, Mechanical Springs',
+                        instructions: 'Craft the Staff of Protection (Bubble Shield), Staff of Embers (AoE fire artillery), or the Carapace Buckler and Arbalest depending on your combat archetype.',
+                        unlocks: ['700 HP Bubble Shield', '200+ Pierce Arbalest'],
+                        tip: 'The Staff of Protection bubble shield absorbs 100% of damage until depleted, making sudden ambushes non-lethal.'
+                    },
+                    {
+                        num: 9,
+                        title: 'Assemble Sealbreaker Key & Conquer The Queen',
+                        prereq: '9 Sealbreaker Fragments found across Infested Mines',
+                        instructions: 'Assemble the 9 Sealbreaker Fragments at the Galdr Table into the Sealbreaker. Locate the Infested Citadel vault. Unlock the gate, maintain Bubble Shield, and defeat The Queen using Frost & Lightning.',
+                        unlocks: ['The Queen Trophy', 'Majestic Carapace (Ashlands Precursor)'],
+                        tip: 'Bottleneck The Queen’s summoned adds on the dungeon staircases and clear them with Demolisher radial slams.'
+                    },
+                    {
+                        num: 10,
+                        title: 'Pre-Ashlands Maritime Logistics & The Drakkar',
+                        prereq: 'Artisan Table, Black Marble, Iron Nails, Yggdrasil Wood',
+                        instructions: 'Craft the Artisan Press to compress Black Marble into 30 Ceramic Plates. Construct the majestic Drakkar ship (100 Iron Nails, 30 Ceramic Plates, 50 Yggdrasil Wood, 25 Fine Wood). Prepare Shield Generator materials.',
+                        unlocks: ['The Drakkar Ship (Boiling Ocean Immune)', 'Passage to Tier 7'],
+                        tip: 'DO NOT sail south in a Longship or Karve! The Ashlands boiling sea dissolves normal ships in under 20 seconds.'
+                    }
+                ]
+            },
+            'ashlands': {
+                tierTitle: 'Ashlands (Tier 7) Chronological Progression',
+                steps: [
+                    {
+                        num: 1,
+                        title: 'The Boiling Sea Crossing & Drakkar Navigation',
+                        prereq: 'Drakkar Ship, Fire Resistance Wine, Major Healing Meads',
+                        instructions: 'Set sail due south in the Drakkar. Navigate through jagged spire rocks in the boiling sea. Use the Drakkar\'s heavy armored prow to ram through narrow waterway channels.',
+                        unlocks: ['Ashlands Coastline Discovery', 'Drakkar Deep Ocean Port'],
+                        tip: 'Keep the Drakkar moving; Bonemaws in the boiling sea can spit water projectiles, but Drakkar has 3,000 HP.'
+                    },
+                    {
+                        num: 2,
+                        title: 'Instant Beachhead & Shield Generator Fortification',
+                        prereq: 'Stonecutter, 5 Copper, 5 Iron, 1 Molten Core, Bones/Wood',
+                        instructions: 'The second your boots touch the ash shore, erect an enclosed stone workbench and deploy the Shield Generator. Fuel the generator with Bones or Charcoal to deflect falling burning meteors.',
+                        unlocks: ['Meteor-Proof Safe Perimeter', 'Base Spawn Suppression'],
+                        tip: 'Without an active Shield Generator, burning celestial meteors will smash your portal and ships to kindling within 3 minutes.'
+                    },
+                    {
+                        num: 3,
+                        title: 'Charred Fortress Sieges (Catapults & Rams)',
+                        prereq: 'Ashwood, Flametal, Mechanical Springs, Iron',
+                        instructions: 'Scout massive Charred Fortresses protected by boiling green shields. Construct a Catapult or Battering Ram outside the walls to breach the gate. Slay the Charred Warlocks inside for Molten Cores.',
+                        unlocks: ['Molten Cores & Bell Fragments', 'Fortress Chest Loot'],
+                        tip: 'Fire explosive Payload barrels from the catapult into the fortress courtyard to wipe out 20+ Charred defenders in one shot.'
+                    },
+                    {
+                        num: 4,
+                        title: 'Flametal Mining (Sinking Spire Speed Tactics)',
+                        prereq: 'Black Metal Pickaxe, Fire Resistance Wine, Asksvin Cloak / Feather Cape',
+                        instructions: 'Locate Flametal Spires jutting out of open magma lakes. Flametal pillars sink into the lava once struck! Mine rapidly with high stamina, then leap back to safe ground before the pillar submerges.',
+                        unlocks: ['Flametal Ore', 'Tier 7 Smelting Influx'],
+                        tip: 'Drink Fire Resistance Wine before touching spires. If you fall into lava without Wine, you will perish in 1 second.'
+                    },
+                    {
+                        num: 5,
+                        title: 'Ashlands Industrial Forging & Gem Cutting Table',
+                        prereq: 'Blast Furnace, Molten Cores, Ashwood, Ceramic Plates',
+                        instructions: 'Smelt Flametal Ore in the Blast Furnace. Build the Gem Cutter station (10 Black Marble, 10 Ashwood, 5 Flametal). This unlocks weapon socketing for Iolite (Storm), Jade (Nature), and Bloodstone (Blood).',
+                        unlocks: ['Gem Socketing & Weapon Infusions', 'Flametal Station Upgrades'],
+                        tip: 'Lightning (Iolite) is the best all-around infusion because it chains arc damage through massive Charred hordes.'
+                    },
+                    {
+                        num: 6,
+                        title: 'Asksvin Domestication & Fast Overland Saddles',
+                        prereq: 'Vineberries / Smoke Puffs, Earthen Pit, Asksvin Pelts',
+                        instructions: 'Lure aggressive Asksvins into a deep pit and throw in Vineberries or Smoke Puffs to tame them. Craft the Asksvin Saddle to traverse jagged Ashlands terrain at twice your base sprint speed.',
+                        unlocks: ['Asksvin Mount (Lava-Resistant Transit)', 'High-Yield Asksvin Meat'],
+                        tip: 'Asksvins reproduce rapidly in captivity and yield tier-top Mashed Meat and Fiery Svinstew ingredients.'
+                    },
+                    {
+                        num: 7,
+                        title: 'Forge the Celestial & Magma Arsenal',
+                        prereq: 'Flametal Ingots, Refined Eitr, Iolite Gems, Molten Cores',
+                        instructions: 'Craft the Trollstav (summons magma trolls to fight for you), Dundr (lightning shotgun), Slayer (2H greatsword), or Berserkir Dual Axes depending on your spec.',
+                        unlocks: ['Trollstav Magma Summon', 'Lightning Elemental Burst DPS'],
+                        tip: 'The Trollstav summons a gargantuan Magma Troll that easily solos entire Charred Fortresses while you watch safely.'
+                    },
+                    {
+                        num: 8,
+                        title: 'Reconstruct the Emerald Bell at Galdr Table',
+                        prereq: '3 Bell Fragments salvaged from Charred Fortresses',
+                        instructions: 'Gather 3 Bell Fragments by conquering 3 different Charred Fortresses. Take them to the upgraded Galdr Table to reforge the mysterious Emerald Bell of Fader.',
+                        unlocks: ['Emerald Bell (Fader Summoning Relic)'],
+                        tip: 'Ensure all team members have upgraded Lightning weapons and multiple stacks of Fire Barley Wine before ringing.'
+                    },
+                    {
+                        num: 9,
+                        title: 'Summon & Vanquish Fader (The Emerald Dragon)',
+                        prereq: 'Emerald Bell, Active Shield Generator near arena',
+                        instructions: 'Ring the Emerald Bell at Fader’s colossal altar. Cast Trollstav to divert his aggro, evade the green fire breath, and unleash Lightning-infused melee or Dundr shotgun blasts into his flanks.',
+                        unlocks: ['Fader Trophy & Relic', '1.0 Endgame Mastery'],
+                        tip: 'Deploy a temporary Shield Generator just outside Fader’s aggro leash to create a safe healing and potion shelter.'
+                    },
+                    {
+                        num: 10,
+                        title: 'Endgame Dominance & Deep North Expedition Prep',
+                        prereq: 'Fader Relic, Full Flametal / Embla Armor, 100+ Rations',
+                        instructions: 'Consolidate your stockpiles, upgrade Flametal armaments to max tier, and prepare for the freezing frontier of the Deep North.',
+                        unlocks: ['Deep North Readiness', 'Full 1.0 Biome Completion'],
+                        tip: 'Keep your Drakkar maintained and stock high-tier Eitr and Stamina foods for the icy wastes ahead.'
+                    }
+                ]
+            }
+        };
+
+        // ==========================================
+        // 4. MULTI-BIOME INDUSTRIAL PIPELINES DATA
+        // ==========================================
+        const craftingPipelinesData = {
+            'mistlands': {
+                title: 'Mistlands (Tier 6) Eitr & Refinement Pipeline',
+                badge: 'Magic & Flight Era',
+                stages: [
+                    { num: '01', title: 'Ancient Root Tapping', desc: 'Mount Sap Extractors onto pulsating green roots to draw raw liquid Sap.', output: 'Output: Liquid Sap' },
+                    { num: '02', title: 'Petrified Soft Tissue', desc: 'Excavate giant ancient skulls with Black Metal Pickaxe for brain tissue.', output: 'Output: Soft Tissue' },
+                    { num: '03', title: 'Infested Mine Cores', desc: 'Raid subterranean mine vaults to harvest 5 glowing Black Cores.', output: 'Required: 5 Black Cores' },
+                    { num: '04', title: 'Eitr Refinery Shield', desc: 'Encase refinery in Black Marble to contain radioactive discharge sparks.', output: 'Station: Eitr Refinery' },
+                    { num: '05', title: 'Galdr Table Influx', desc: 'Combine Refined Eitr with Yggdrasil Wood for Feather Cape & Staves.', output: 'Result: Feather Cape & Gear' }
+                ]
+            },
+            'ashlands': {
+                title: 'Ashlands (Tier 7) Flametal & Gem Socketing Pipeline',
+                badge: 'Volcanic Forge & Siege Era',
+                stages: [
+                    { num: '01', title: 'Sinking Spire Mining', desc: 'Leap onto sinking magma pillars; mine Flametal Ore before it submerges.', output: 'Output: Flametal Ore' },
+                    { num: '02', title: 'Fortress Catapult Breaches', desc: 'Fire payload catapults to breach Charred walls and claim Molten Cores.', output: 'Target: Molten Cores' },
+                    { num: '03', title: 'Blast Furnace Smelting', desc: 'Smelt Flametal Ore into glowing ingots using Surtling/Molten Cores.', output: 'Output: Flametal Ingots' },
+                    { num: '04', title: 'Artisan Press Ceramics', desc: 'Compress Black Marble into 30 Ceramic Plates for Drakkar & Shield Gen.', output: 'Station: Artisan Press' },
+                    { num: '05', title: 'Gem Cutter Socketing', desc: 'Socket Iolite (Storm), Jade (Nature) & Bloodstone (Blood) into armaments.', output: 'Result: Elemental Weapons' }
+                ]
+            },
+            'deepnorth': {
+                title: 'Deep North (Tier 8) Bloodgold & Glacial Casting Architecture',
+                badge: 'Final Metallurgical Capstone',
+                stages: [
+                    { num: '01', title: 'Gammeltroll Harvest', desc: 'Defeat Gammeltrolls to trigger petrification of remains into mineral deposits.', output: 'Target: Petrified Remains' },
+                    { num: '02', title: 'Ember Detonation', desc: 'Detonate Ember Charges against petrified remains to yield Petrified Tissue.', output: 'Output: Bloodgold Ingots' },
+                    { num: '03', title: 'Dungeon Molds', desc: 'Recover Molds from Winding Tunnels (Weapons) & Mörkhalla Fortress (Armor).', output: 'Requires: Grappling Hook' },
+                    { num: '04', title: 'Frigid Kiln Loop', desc: 'Melt glacial ice in Frigid Kiln to yield Liquid Frost fuel for Frost Foundry.', output: 'Station: Frigid Kiln' },
+                    { num: '05', title: 'Frost Foundry Casting', desc: 'Combine Cast (Mold + Bloodgold + Pelts) with Liquid Frost in Frost Foundry.', output: 'Result: Finished Nord Gear' }
+                ]
+            }
+        };
+
+        // ==========================================
+        // 5. APEX BOSS INTELLIGENCE DATA
+        // ==========================================
+        const bossIntelligenceData = {
+            'the-queen': {
+                name: 'The Queen Vulnerabilities',
+                tierBadge: 'Mistlands Apex Boss (Tier 6)',
+                summonBadge: 'Assembled Sealbreaker (9 Fragments)',
+                lore: 'The Queen inhabits the subterranean Infested Citadel. She burrows through solid stone, shoots toxic bile, and summons swarms of Seekers and Broodlings.',
+                radarLabels: ['Blunt Damage', 'Slash Damage', 'Lightning Element', 'Pierce Damage', 'Fire Element', 'Frost Element'],
+                radarData: [50, 100, 100, 100, 50, 50],
+                phases: [
+                    {
+                        title: 'Phase 1: 100% - 75% Health',
+                        tag: 'Burrowing Ambush & Scythe Lunges',
+                        borderClass: 'border-l-nordic-frost',
+                        tagClass: 'text-nordic-frost',
+                        desc: 'Cast <strong>Staff of Protection</strong> to keep your 700 HP Bubble Shield active at all times. Parry her frontal scythe sweep with the <strong>Carapace Buckler</strong> (x2.5 stagger) and counter with <strong>Mistwalker</strong> Frost combos.'
+                    },
+                    {
+                        title: 'Phase 2: 75% - 40% Health',
+                        tag: 'Infinite Brood & Seeker Swarms',
+                        borderClass: 'border-l-nordic-gold',
+                        tagClass: 'text-nordic-gold',
+                        desc: 'Retreat to the stone entry staircase to funnel adds into a narrow bottleneck. Slam the ground repeatedly with the <strong>Demolisher</strong> or cast <strong>Staff of Embers</strong> fire artillery to annihilate swarming Ticks and Broodlings.'
+                    },
+                    {
+                        title: 'Phase 3: 40% - 0% Health',
+                        tag: 'Berserk Teleportation & Acid Spores',
+                        borderClass: 'border-l-nordic-ember',
+                        tagClass: 'text-nordic-ember',
+                        desc: 'Shift between mobility and burst DPS. Fire <strong>Arbalest Carapace bolts</strong> or execute hit-and-run slashes into recovery frames. If overrun, leap safely down tiers with the <strong>Feather Cape</strong> to reapply bubble shields.'
+                    }
+                ]
+            },
+            'fader': {
+                name: 'Fader (Emerald Dragon) Vulnerabilities',
+                tierBadge: 'Ashlands Apex Boss (Tier 7)',
+                summonBadge: 'Reforged Emerald Bell (3 Fortress Fragments)',
+                lore: 'Fader is a colossal skeletal dragon awakened in the deep ash plains. He calls down emerald meteor rain, sweeps with green necrotic fire, and summons charred legions.',
+                radarLabels: ['Blunt Damage', 'Slash Damage', 'Lightning Element', 'Pierce Damage', 'Fire Element', 'Frost Element'],
+                radarData: [50, 100, 100, 100, 0, 50],
+                phases: [
+                    {
+                        title: 'Phase 1: 100% - 70% Health',
+                        tag: 'Dragon Breath & Tail Cleaves',
+                        borderClass: 'border-l-nordic-frost',
+                        tagClass: 'text-nordic-frost',
+                        desc: 'Cast <strong>Trollstav</strong> to summon a Magma Troll; Fader will focus his dragon breath on the troll. Flank his hind legs and strike with <strong>Lightning Berserkir Dual Axes</strong> or <strong>Dundr</strong> shotgun blasts.'
+                    },
+                    {
+                        title: 'Phase 2: 70% - 30% Health',
+                        tag: 'Emerald Meteor Cascade & Charred Adds',
+                        borderClass: 'border-l-nordic-gold',
+                        tagClass: 'text-nordic-gold',
+                        desc: 'Stay under the perimeter of an active <strong>Shield Generator</strong> to deflect falling meteors. Clear summoned Charred Warriors with secondary sweeping attacks. Ensure Fire Resistance Barley Wine is continuously active.'
+                    },
+                    {
+                        title: 'Phase 3: 30% - 0% Health',
+                        tag: 'Necrotic Ground Fissures & Dragon Flight',
+                        borderClass: 'border-l-nordic-ember',
+                        tagClass: 'text-nordic-ember',
+                        desc: 'Never step into glowing green fissures left by Fader\'s breath. When he takes flight, unload with the <strong>Ripper Arbalest</strong> or cast lightning bursts. Keep stamina above 40% for rapid dodging.'
+                    }
+                ]
+            },
+            'kall': {
+                name: 'Kall Fimbulbringer Vulnerabilities',
+                tierBadge: 'Deep North Apex Boss (Tier 8)',
+                summonBadge: '3 Malicious Blood Vials',
+                lore: 'Kall possesses complete frost immunity and natural mitigation against standard Fire. Lightning damage bypasses resistances to force rapid stagger states.',
+                radarLabels: ['Blunt Damage', 'Slash Damage', 'Lightning Element', 'Pierce Damage', 'Fire Element', 'Frost Element'],
+                radarData: [90, 85, 100, 40, 25, 0],
+                phases: [
+                    {
+                        title: 'Phase 1: 100% - 70% Health',
+                        tag: 'Sweeps & Hammer Slams',
+                        borderClass: 'border-l-nordic-frost',
+                        tagClass: 'text-nordic-frost',
+                        desc: 'Parry frontal sweeps using the <strong>Nord Buckler</strong>. Punish recovery frames with the <strong>Thunderblood Mace</strong> blunt/lightning combo. Latch Grappling Hook onto pillars during ground slams.'
+                    },
+                    {
+                        title: 'Phase 2: 70% - 30% Health',
+                        tag: 'Shockwaves & Fragile Ice',
+                        borderClass: 'border-l-nordic-gold',
+                        tagClass: 'text-nordic-gold',
+                        desc: 'Cast <strong>Northern Vengeance</strong> shields to absorb radial shockwaves. Clear summoned adds using Thunderblood Atgeir secondary spin. Grapple immediately if standing ice shatters.'
+                    },
+                    {
+                        title: 'Phase 3: 30% - 0% Health',
+                        tag: 'Whiteout Blizzard & Fissures',
+                        borderClass: 'border-l-nordic-ember',
+                        tagClass: 'text-nordic-ember',
+                        desc: 'Shift to ranged execution. Fire <strong>Bloodgold Payload</strong> explosive bolts or cast <strong>Lightning Strike</strong> directly into recovery frames. Utilize Vanguard dodge discounts to evade charges.'
+                    }
+                ]
+            }
+        };
+
+        let currentActiveBoss = 'the-queen';
+        let bossRadarChartInstance = null;
+
+        // ==========================================
+        // 6. FUNCTION IMPLEMENTATIONS
+        // ==========================================
+
+        // ENEMY COUNTER MATRIX
+        let currentEnemyBiomeFilter = 'all';
+        function initEnemyMatrix() {
+            const filterContainer = document.getElementById('enemy-biome-filter');
+            const searchInput = document.getElementById('enemy-search-input');
+            if (!filterContainer || !searchInput) return;
+
+            const filters = [
+                { id: 'all', name: 'All Apex Threats', icon: '✨' },
+                { id: 'mistlands', name: 'Mistlands (6)', icon: '🌫️' },
+                { id: 'ashlands', name: 'Ashlands (5)', icon: '🌋' },
+                { id: 'deep-north', name: 'Deep North (1)', icon: '❄️' }
+            ];
+
+            filterContainer.innerHTML = '';
+            filters.forEach(f => {
+                const btn = document.createElement('button');
+                btn.className = `px-3 py-1 text-xs font-bold rounded transition-all flex items-center space-x-1.5 ${
+                    f.id === currentEnemyBiomeFilter
+                        ? 'bg-nordic-frost text-slate-950 shadow-sm'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                }`;
+                btn.innerHTML = `<span>${f.icon}</span><span>${f.name}</span>`;
+                btn.addEventListener('click', () => {
+                    currentEnemyBiomeFilter = f.id;
+                    initEnemyMatrix();
+                    renderEnemyCards();
+                });
+                filterContainer.appendChild(btn);
+            });
+
+            searchInput.removeEventListener('input', renderEnemyCards);
+            searchInput.addEventListener('input', renderEnemyCards);
+
+            renderEnemyCards();
+        }
+
+        function renderEnemyCards() {
+            const container = document.getElementById('enemy-cards-container');
+            const searchInput = document.getElementById('enemy-search-input');
+            const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+            let filtered = enemyBestiaryData;
+            if (currentEnemyBiomeFilter !== 'all') {
+                filtered = filtered.filter(e => e.biome === currentEnemyBiomeFilter);
+            }
+            if (query) {
+                filtered = filtered.filter(e => 
+                    e.name.toLowerCase().includes(query) ||
+                    e.counterWeapon.toLowerCase().includes(query) ||
+                    e.weaknesses.some(w => w.toLowerCase().includes(query)) ||
+                    e.resistances.some(r => r.toLowerCase().includes(query)) ||
+                    e.tactics.toLowerCase().includes(query)
+                );
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400 text-sm">No enemy threats match query "${query}". Try searching "Seeker", "Frost", or "Gjall".</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(e => `
+                <div class="bg-nordic-bg/80 border border-nordic-cardBorder rounded-xl p-5 shadow-lg flex flex-col justify-between space-y-4 hover:border-nordic-frost/40 transition-all">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2.5">
+                                <span class="text-2xl">${e.icon}</span>
+                                <div>
+                                    <h3 class="font-bold text-white text-base leading-tight">${e.name}</h3>
+                                    <span class="text-[11px] text-slate-400 font-mono">${e.biomeName} Biome</span>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border ${e.threatClass}">${e.threat}</span>
+                        </div>
+
+                        <div class="p-2.5 bg-nordic-card rounded-lg text-xs space-y-1 font-mono">
+                            <div class="text-slate-300"><span class="text-slate-500 font-sans">Pool:</span> ${e.hp}</div>
+                            <div class="text-slate-300"><span class="text-slate-500 font-sans">Attack:</span> ${e.attack}</div>
+                        </div>
+
+                        <div class="space-y-1.5 pt-1">
+                            <div class="text-[11px] font-bold uppercase text-nordic-emerald tracking-wider">Weaknesses & Multipliers:</div>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${e.weaknesses.map(w => `<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-700/80 text-emerald-300">${w}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 pt-1">
+                            <div class="text-[11px] font-bold uppercase text-nordic-ember tracking-wider">Resistances & Immunities:</div>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${e.resistances.map(r => `<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-rose-950/80 border border-rose-800/80 text-rose-300">${r}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="pt-2 text-xs text-slate-300 space-y-1">
+                            <div class="font-bold text-nordic-gold flex items-center space-x-1"><span>⚔️ Optimal Counter:</span></div>
+                            <p class="text-[11px] text-slate-200">${e.counterWeapon}</p>
+                        </div>
+
+                        <div class="text-xs text-slate-300 space-y-1">
+                            <div class="font-bold text-nordic-frost flex items-center space-x-1"><span>🎯 Combat Mechanic:</span></div>
+                            <p class="text-[11px] text-slate-300 leading-relaxed">${e.tactics}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-nordic-ember/10 border border-nordic-ember/30 rounded-lg text-[11px] text-nordic-ember leading-relaxed">
+                        ⚠️ <strong>Lethal Trap:</strong> ${e.lethalWarning}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // DIET CALCULATOR
+        function initDietCalculator() {
+            renderDietPresets();
+            renderDietSlots();
+            updateDietCalculations();
+        }
+
+        function renderDietPresets() {
+            const container = document.getElementById('diet-preset-buttons');
+            if (!container) return;
+
+            const presets = [
+                { name: 'Mistlands Bruiser (2 HP, 1 Stam)', foods: ['misthare-supreme', 'meat-platter', 'salad'] },
+                { name: 'Pure Galdr Mage (3 Eitr)', foods: ['seeker-aspic', 'yggdrasil-porridge', 'stuffed-mushroom'] },
+                { name: 'Mistlands Hybrid (1 HP, 1 Stam, 1 Eitr)', foods: ['misthare-supreme', 'salad', 'seeker-aspic'] },
+                { name: 'Ashlands Vanguard (2 HP, 1 Stam)', foods: ['fiery-svinstew', 'mashed-meat', 'spicy-marmalade'] },
+                { name: 'Ashlands Pyromancer (2 Eitr, 1 HP)', foods: ['sparkling-shroomshake', 'scorching-sizzle', 'fiery-svinstew'] }
+            ];
+
+            container.innerHTML = presets.map((p, idx) => `
+                <button class="px-2.5 py-1 text-[11px] font-bold rounded border border-nordic-cardBorder bg-nordic-bg text-slate-400 hover:text-white hover:bg-slate-800 transition-all" onclick="applyDietPreset(${idx})">
+                    ${p.name}
+                </button>
+            `).join('');
+
+            window.applyDietPreset = function(index) {
+                selectedDietSlots = [...presets[index].foods];
+                renderDietSlots();
+                updateDietCalculations();
+            };
+        }
+
+        function renderDietSlots() {
+            const container = document.getElementById('food-slots-container');
+            if (!container) return;
+
+            container.innerHTML = selectedDietSlots.map((foodId, slotIdx) => {
+                const food = dietFoodsDatabase.find(f => f.id === foodId) || dietFoodsDatabase[0];
+                return `
+                    <div class="bg-nordic-bg/90 border border-nordic-cardBorder rounded-lg p-3 space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-300 uppercase">Food Slot ${slotIdx + 1}</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded ${
+                                food.type === 'hp' ? 'bg-red-950 text-red-300 border border-red-700/60' :
+                                food.type === 'stam' ? 'bg-amber-950 text-amber-300 border border-amber-600/60' :
+                                'bg-purple-950 text-purple-300 border border-purple-700/60'
+                            }">${food.badge} • ${food.biome.toUpperCase()}</span>
+                        </div>
+                        <select class="w-full bg-nordic-card border border-nordic-cardBorder text-white text-xs rounded p-2 focus:outline-none focus:border-nordic-frost" onchange="changeDietFood(${slotIdx}, this.value)">
+                            ${dietFoodsDatabase.map(f => {
+                                const isSelected = f.id === foodId;
+                                const isDuplicateInOtherSlot = selectedDietSlots.some((id, idx) => idx !== slotIdx && id === f.id);
+                                return `<option value="${f.id}" ${isSelected ? 'selected' : ''} ${isDuplicateInOtherSlot ? 'disabled' : ''}>
+                                    ${f.name} [${f.hp} HP | ${f.stam} Stam | ${f.eitr} Eitr] (${f.biome}) ${isDuplicateInOtherSlot ? '— (Already Selected)' : ''}
+                                </option>`;
+                            }).join('')}
+                        </select>
+                    </div>
+                `;
+            }).join('');
+
+            window.changeDietFood = function(slotIdx, newFoodId) {
+                selectedDietSlots[slotIdx] = newFoodId;
+                renderDietSlots();
+                updateDietCalculations();
+            };
+        }
+
+        function updateDietCalculations() {
+            const foods = selectedDietSlots.map(id => dietFoodsDatabase.find(f => f.id === id)).filter(Boolean);
+
+            const baseHp = 25;
+            const baseStam = 50;
+            const baseEitr = 0;
+
+            const totalHp = baseHp + foods.reduce((sum, f) => sum + f.hp, 0);
+            const totalStam = baseStam + foods.reduce((sum, f) => sum + f.stam, 0);
+            const totalEitr = baseEitr + foods.reduce((sum, f) => sum + f.eitr, 0);
+            const totalRegen = foods.reduce((sum, f) => sum + f.regen, 0);
+            const minDuration = Math.min(...foods.map(f => f.duration));
+
+            // Update DOM text
+            document.getElementById('stat-hp-val').innerText = `${totalHp} HP`;
+            document.getElementById('stat-stam-val').innerText = `${totalStam} Stamina`;
+            document.getElementById('stat-eitr-val').innerText = `${totalEitr} Eitr`;
+            document.getElementById('stat-hp-regen').innerText = `Total Regen: +${totalRegen} hp/tick`;
+            document.getElementById('stat-duration-val').innerText = `Min Duration: ${minDuration} min`;
+
+            // Update Progress Bars (scaled against theoretical max caps)
+            document.getElementById('stat-hp-bar').style.width = `${Math.min(100, Math.round((totalHp / 300) * 100))}%`;
+            document.getElementById('stat-stam-bar').style.width = `${Math.min(100, Math.round((totalStam / 250) * 100))}%`;
+            document.getElementById('stat-eitr-bar').style.width = `${Math.min(100, Math.round((totalEitr / 250) * 100))}%`;
+
+            // Determine Archetype
+            const hpCount = foods.filter(f => f.type === 'hp').length;
+            const stamCount = foods.filter(f => f.type === 'stam').length;
+            const eitrCount = foods.filter(f => f.type === 'eitr').length;
+
+            let archetypeName = 'Balanced Explorer / Combatant';
+            let archetypeDesc = 'Balanced distribution across health, stamina, and utility.';
+            let archetypeIcon = '⚖️';
+
+            if (hpCount >= 2) {
+                archetypeName = 'Frontline Heavy Juggernaut';
+                archetypeDesc = 'Huge health cushion to absorb heavy parry stagger and survive blunt/slash boss slams.';
+                archetypeIcon = '🩸';
+            } else if (stamCount >= 2) {
+                archetypeName = 'Agile Skirmisher & Marksman';
+                archetypeDesc = 'High continuous stamina pool for constant bow/arbalest drawing, dodging, and jumping.';
+                archetypeIcon = '⚡';
+            } else if (eitrCount >= 2) {
+                archetypeName = 'Galdr Elemental / Blood Arcanist';
+                archetypeDesc = 'Massive Eitr pool to sustain constant Bubble Shielding and artillery barrage from Staves.';
+                archetypeIcon = '🔮';
+            } else if (hpCount === 1 && stamCount === 1 && eitrCount === 1) {
+                archetypeName = 'Battle-Mage Hybrid';
+                archetypeDesc = 'Permits casting Staff of Protection shield while maintaining sword melee stamina and safe HP.';
+                archetypeIcon = '✨';
+            }
+
+            const archetypeBanner = document.getElementById('diet-archetype-banner');
+            if (archetypeBanner) {
+                archetypeBanner.innerHTML = `
+                    <span class="text-3xl">${archetypeIcon}</span>
+                    <div>
+                        <div class="text-xs font-bold text-white uppercase">${archetypeName} (${hpCount} HP / ${stamCount} Stam / ${eitrCount} Eitr)</div>
+                        <p class="text-[11px] text-slate-400 mt-0.5">${archetypeDesc}</p>
+                    </div>
+                `;
+            }
+
+            // Grocery list for 10 stacks (100 portions)
+            const groceryContainer = document.getElementById('diet-grocery-list');
+            if (groceryContainer) {
+                const totals = {};
+                foods.forEach(f => {
+                    for (const [ing, count] of Object.entries(f.ingredients)) {
+                        totals[ing] = (totals[ing] || 0) + (count * 100);
+                    }
+                });
+
+                groceryContainer.innerHTML = Object.entries(totals).map(([ing, count]) => `
+                    <div class="bg-nordic-card p-2 rounded border border-nordic-cardBorder flex justify-between items-center text-xs">
+                        <span class="text-slate-300 font-medium">${ing}</span>
+                        <span class="font-mono font-bold text-nordic-gold">${count}x</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // STEP-BY-STEP ROADMAP
+        let currentRoadmapTier = 'mistlands';
+        function initRoadmap() {
+            const selector = document.getElementById('roadmap-tier-selector');
+            const resetBtn = document.getElementById('reset-roadmap-btn');
+            if (!selector) return;
+
+            const tiers = [
+                { id: 'mistlands', name: 'Mistlands (Tier 6)', icon: '🌫️' },
+                { id: 'ashlands', name: 'Ashlands (Tier 7)', icon: '🌋' }
+            ];
+
+            selector.innerHTML = tiers.map(t => `
+                <button class="px-3 py-1 text-xs font-bold rounded transition-all flex items-center space-x-1.5 ${
+                    t.id === currentRoadmapTier
+                        ? 'bg-nordic-frost text-slate-950 shadow-sm'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                }" onclick="switchRoadmapTier('${t.id}')">
+                    <span>${t.icon}</span><span>${t.name}</span>
+                </button>
+            `).join('');
+
+            window.switchRoadmapTier = function(tierId) {
+                currentRoadmapTier = tierId;
+                initRoadmap();
+            };
+
+            if (resetBtn) {
+                resetBtn.onclick = function() {
+                    if (confirm(`Reset all checklist progress for ${currentRoadmapTier.toUpperCase()}?`)) {
+                        localStorage.removeItem(`valheim_roadmap_${currentRoadmapTier}`);
+                        renderRoadmapSteps();
+                    }
+                };
+            }
+
+            renderRoadmapSteps();
+        }
+
+        function renderRoadmapSteps() {
+            const container = document.getElementById('roadmap-steps-container');
+            const data = roadmapProgressionData[currentRoadmapTier];
+            if (!container || !data) return;
+
+            // Load saved checklist state
+            const savedState = JSON.parse(localStorage.getItem(`valheim_roadmap_${currentRoadmapTier}`) || '{}');
+
+            document.getElementById('roadmap-tier-title').innerText = data.tierTitle;
+
+            let completedCount = 0;
+            data.steps.forEach((step, idx) => {
+                if (savedState[idx]) completedCount++;
+            });
+
+            const percent = Math.round((completedCount / data.steps.length) * 100);
+            document.getElementById('roadmap-completion-badge').innerText = `${completedCount} / ${data.steps.length} Completed (${percent}%)`;
+            document.getElementById('roadmap-progress-bar').style.width = `${percent}%`;
+
+            // Next objective
+            const nextStep = data.steps.find((s, idx) => !savedState[idx]);
+            document.getElementById('roadmap-next-objective').innerText = nextStep 
+                ? `Next Objective: Step ${nextStep.num} - ${nextStep.title}`
+                : `🎉 All ${data.tierTitle} Milestones Complete! Ready for Next Tier.`;
+
+            container.innerHTML = data.steps.map((step, idx) => {
+                const isChecked = !!savedState[idx];
+                return `
+                    <div class="bg-nordic-bg/90 border ${isChecked ? 'border-nordic-emerald/50 bg-emerald-950/10' : 'border-nordic-cardBorder'} rounded-xl p-5 shadow-lg transition-all space-y-3">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3.5">
+                                <input type="checkbox" id="step-chk-${idx}" class="mt-1 w-5 h-5 accent-emerald-500 rounded cursor-pointer shrink-0" 
+                                    ${isChecked ? 'checked' : ''} onchange="toggleRoadmapStep(${idx}, this.checked)" />
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-xs font-mono font-bold text-nordic-gold">STEP 0${step.num}</span>
+                                        <span class="text-[10px] text-slate-500">•</span>
+                                        <span class="text-[11px] text-slate-400 font-medium">Prereq: ${step.prereq}</span>
+                                    </div>
+                                    <h4 class="text-base font-bold ${isChecked ? 'line-through text-slate-400' : 'text-white'} mt-0.5">${step.title}</h4>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded ${isChecked ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-slate-800 text-slate-400 border border-slate-700'}">
+                                ${isChecked ? '✓ DONE' : 'PENDING'}
+                            </span>
+                        </div>
+
+                        <p class="text-xs text-slate-300 pl-8 leading-relaxed">${step.instructions}</p>
+
+                        <div class="pl-8 flex flex-wrap items-center gap-2 pt-1">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-nordic-frost">Key Unlocks:</span>
+                            ${step.unlocks.map(u => `<span class="text-[11px] px-2 py-0.5 rounded bg-nordic-card border border-nordic-cardBorder text-nordic-frost font-mono">${u}</span>`).join('')}
+                        </div>
+
+                        <div class="pl-8 pt-1">
+                            <div class="bg-nordic-card/80 border border-nordic-cardBorder p-2.5 rounded-lg text-[11px] text-slate-400 flex items-center space-x-2">
+                                <span class="text-base">💡</span>
+                                <span><strong>Field Tip:</strong> ${step.tip}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            window.toggleRoadmapStep = function(idx, checked) {
+                const state = JSON.parse(localStorage.getItem(`valheim_roadmap_${currentRoadmapTier}`) || '{}');
+                state[idx] = checked;
+                localStorage.setItem(`valheim_roadmap_${currentRoadmapTier}`, JSON.stringify(state));
+                renderRoadmapSteps();
+            };
+        }
+
+        // CRAFTING PIPELINES
+        let currentPipelineTier = 'mistlands';
+        function initCraftingPipelines() {
+            const tabs = document.getElementById('crafting-pipeline-tabs');
+            const container = document.getElementById('crafting-pipeline-container');
+            if (!tabs || !container) return;
+
+            const tiers = [
+                { id: 'mistlands', name: 'Mistlands (Eitr Refinery)', icon: '🧪' },
+                { id: 'ashlands', name: 'Ashlands (Flametal & Gems)', icon: '🌋' },
+                { id: 'deepnorth', name: 'Deep North (Bloodgold)', icon: '❄️' }
+            ];
+
+            tabs.innerHTML = tiers.map(t => `
+                <button class="px-3 py-1 text-xs font-bold rounded transition-all flex items-center space-x-1.5 ${
+                    t.id === currentPipelineTier
+                        ? 'bg-nordic-frost text-slate-950 shadow-sm'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                }" onclick="switchPipelineTier('${t.id}')">
+                    <span>${t.icon}</span><span>${t.name}</span>
+                </button>
+            `).join('');
+
+            window.switchPipelineTier = function(tierId) {
+                currentPipelineTier = tierId;
+                initCraftingPipelines();
+            };
+
+            const data = craftingPipelinesData[currentPipelineTier];
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-nordic-cardBorder pb-2">
+                        <h3 class="text-lg font-bold text-white">${data.title}</h3>
+                        <span class="text-xs font-bold text-nordic-gold bg-nordic-gold/10 px-2.5 py-0.5 rounded border border-nordic-gold/30">${data.badge}</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                        ${data.stages.map((stage, idx) => `
+                            <div class="bg-nordic-bg/80 border border-nordic-cardBorder rounded-lg p-4 flex flex-col justify-between space-y-2">
+                                <div class="flex items-center justify-between text-xs font-bold text-nordic-frost">
+                                    <span>STAGE 0${stage.num}</span>
+                                    <span>${idx === 0 ? '⛏️' : idx === 1 ? '💥' : idx === 2 ? '🗝️' : idx === 3 ? '🧪' : '⚔️'}</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">${stage.title}</h4>
+                                    <p class="text-xs text-slate-400 mt-1">${stage.desc}</p>
+                                </div>
+                                <div class="text-[11px] text-nordic-gold font-semibold bg-nordic-card px-2 py-1 rounded">${stage.output}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // BOSS STRATEGY HUB
+        function initBossHub() {
+            const tabs = document.getElementById('boss-selector-tabs');
+            if (!tabs) return;
+
+            const bosses = [
+                { id: 'the-queen', name: 'The Queen (Mistlands)', icon: '👑' },
+                { id: 'fader', name: 'Fader (Ashlands)', icon: '🐲' },
+                { id: 'kall', name: 'Kall Fimbulbringer (Deep North)', icon: '❄️' }
+            ];
+
+            tabs.innerHTML = bosses.map(b => `
+                <button class="px-3 py-1 text-xs font-bold rounded transition-all flex items-center space-x-1.5 ${
+                    b.id === currentActiveBoss
+                        ? 'bg-rose-500 text-slate-950 shadow-sm'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                }" onclick="switchBossProfile('${b.id}')">
+                    <span>${b.icon}</span><span>${b.name}</span>
+                </button>
+            `).join('');
+
+            window.switchBossProfile = function(bossId) {
+                currentActiveBoss = bossId;
+                initBossHub();
+                updateBossDetails();
+            };
+
+            updateBossDetails();
+        }
+
+        function updateBossDetails() {
+            const data = bossIntelligenceData[currentActiveBoss];
+            if (!data) return;
+
+            document.getElementById('boss-tier-badge').innerText = data.tierBadge;
+            document.getElementById('boss-name').innerText = data.name;
+            document.getElementById('boss-summon-badge').innerText = data.summonBadge;
+            document.getElementById('boss-lore-desc').innerHTML = data.lore;
+
+            // Render phases
+            const phasesContainer = document.getElementById('boss-phases-container');
+            if (phasesContainer) {
+                phasesContainer.innerHTML = data.phases.map(p => `
+                    <div class="bg-nordic-card border border-nordic-cardBorder rounded-xl p-4 space-y-2 border-l-4 ${p.borderClass}">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-sm text-white">${p.title}</h4>
+                            <span class="text-xs font-bold ${p.tagClass}">${p.tag}</span>
+                        </div>
+                        <p class="text-xs text-slate-300">${p.desc}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Update radar chart
+            const ctx = document.getElementById('bossChart').getContext('2d');
+            const formattedLabels = data.radarLabels.map(wrapLabel);
+
+            if (bossRadarChartInstance) {
+                bossRadarChartInstance.destroy();
+            }
+
+            bossRadarChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: formattedLabels,
+                    datasets: [{
+                        label: `${data.name} Vulnerability (Higher = Takes More Damage)`,
+                        data: data.radarData,
+                        backgroundColor: currentActiveBoss === 'the-queen' ? 'rgba(168, 85, 247, 0.2)' :
+                                         currentActiveBoss === 'fader' ? 'rgba(239, 68, 68, 0.2)' :
+                                         'rgba(56, 189, 248, 0.2)',
+                        borderColor: currentActiveBoss === 'the-queen' ? '#c084fc' :
+                                     currentActiveBoss === 'fader' ? '#ef4444' :
+                                     '#38bdf8',
+                        pointBackgroundColor: '#ef4444',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#ef4444'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#94a3b8', font: { size: 10 } } },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    return Array.isArray(label) ? label.join(' ') : label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#334155' },
+                            grid: { color: '#334155' },
+                            pointLabels: { color: '#cbd5e1', font: { size: 10 } },
+                            ticks: { display: false, min: 0, max: 100 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // FORGE SIMULATOR
+        function initForgeSimulator() {
+            const itemSelect = document.getElementById('sim-item');
+            const idolSelect = document.getElementById('sim-idol');
+            const btn = document.getElementById('sim-run-btn');
+            const consoleBox = document.getElementById('sim-console');
+            const rateBadge = document.getElementById('sim-success-rate');
+            const statGain = document.getElementById('sim-stat-gain');
+            const failPenalty = document.getElementById('sim-fail-penalty');
+
+            const itemConfigs = {
+                'mistwalker': { rate: 70, gain: '+12 Slash & +8 Frost Damage', penalty: 'Mistwalker destroyed + 3 Refined Eitr refund' },
+                'carapace-buckler': { rate: 75, gain: '+15 Block Armor / Parry Limit', penalty: 'Buckler destroyed + 5 Carapace refund' },
+                'staff-protection': { rate: 60, gain: '+200 Shield Barrier & -15% Eitr Cost', penalty: 'Staff destroyed + 2 Refined Eitr refund' },
+                'berserkir-axes': { rate: 55, gain: '+14 Lightning Chain Burst DPS', penalty: 'Axes destroyed + 4 Flametal refund' },
+                'slayer-greatsword': { rate: 50, gain: '+22 Slash Damage & +10 Stagger', penalty: 'Slayer destroyed + 5 Flametal refund' },
+                'nord-buckler': { rate: 70, gain: '+15 Block Armor / Parry Bonus', penalty: 'Nord Buckler destroyed + 2 Bloodgold refund' },
+                'vanguard-chest': { rate: 60, gain: '+10 Base Armor Rating', penalty: 'Vanguard Chest destroyed + 3 Bloodgold refund' },
+                'thunder-mace': { rate: 45, gain: '+18 Blunt & +12 Lightning DPS', penalty: 'Mace destroyed + 4 Bloodgold refund' }
+            };
+
+            function updateForecast() {
+                const config = itemConfigs[itemSelect.value] || itemConfigs['mistwalker'];
+                let rate = config.rate;
+                if (idolSelect.value === 'flametal-idol') rate += 10;
+                if (idolSelect.value === 'bloodgold-idol') rate += 20;
+                rateBadge.innerText = `Success Rate: ${rate}%`;
+                statGain.innerText = config.gain;
+                failPenalty.innerText = config.penalty;
+            }
+
+            itemSelect.addEventListener('change', updateForecast);
+            idolSelect.addEventListener('change', updateForecast);
+            updateForecast();
+
+            btn.addEventListener('click', () => {
+                const config = itemConfigs[itemSelect.value] || itemConfigs['mistwalker'];
+                let rate = config.rate;
+                if (idolSelect.value === 'flametal-idol') rate += 10;
+                if (idolSelect.value === 'bloodgold-idol') rate += 20;
+
+                const roll = Math.floor(Math.random() * 100) + 1;
+                consoleBox.innerHTML = `<span class="text-slate-400">[Processing Refinement Roll... Scale: ${roll}/100 vs Threshold: ${rate}]</span><br>`;
+
+                setTimeout(() => {
+                    if (roll <= rate) {
+                        consoleBox.innerHTML += `<span class="text-nordic-emerald font-bold">✓ REFINEMENT SUCCESSFUL! Item level expanded beyond ceiling. ${config.gain}.</span>`;
+                    } else {
+                        consoleBox.innerHTML += `<span class="text-nordic-ember font-bold">❌ CRITICAL FAILURE! Equipment destroyed. Sacrificed Catalyst consumed. ${config.penalty}.</span>`;
+                    }
+                }, 400);
+            });
+        }
+
+    </script>
+</body>
+</html>

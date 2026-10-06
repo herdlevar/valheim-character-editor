@@ -1,0 +1,23 @@
+services:
+  valheim-editor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: valheim-character-editor:latest
+    container_name: valheim-editor
+    hostname: valheim-editor
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - "C:/Program Files (x86)/Steam/userdata/1622853/892970/remote/characters:/characters"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - CHARACTERS_DIR=/characters
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

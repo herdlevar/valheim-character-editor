@@ -1,0 +1,38 @@
+--- MINIMAP FIELDS ---
+RawImage m_mapImageSmall
+RawImage m_mapImageLarge
+Sprite m_pingIcon
+Sprite m_pingIconMac
+Boolean m_showSharedMapData
+Single m_sharedMapDataFadeRate
+Single m_sharedMapDataFade
+GameObject m_mapSmall
+GameObject m_mapLarge
+Material m_mapSmallShader
+Material m_mapLargeShader
+Int32 m_textureSize
+Single m_pixelSize
+BitArray m_explored
+BitArray m_exploredOthers
+GameObject m_sharedMapHint
+Vector3 m_previousMapCenter
+Texture2D m_forestMaskTexture
+Texture2D m_mapTexture
+Texture2D m_heightTexture
+Texture2D m_fogTexture
+Single m_nomapPingDistance
+Vector3 m_mapOffset
+Boolean debugMapView
+String m_cachedMinimapMaskTexturePath
+String m_cachedMinimapBiomeTexturePath
+String m_cachedMinimapHeightTexturePath
+String m_cachedMinimapMetaPath
+String c_MaskTextureName
+String c_BiomeTextureName
+String c_HeightTextureName
+
+--- MINIMAP METHODS ---
+Texture2D CreateMapTexture
+Void ResetSharedMapData
+Boolean TryLoadMinimapTextureData
+Void CreateMapNamePin
