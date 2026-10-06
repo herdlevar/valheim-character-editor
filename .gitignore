@@ -9,6 +9,7 @@ dist-electron/
 build/
 bin/
 obj/
+release_dist/
 
 # Logs & Temporary Files
 *.log
