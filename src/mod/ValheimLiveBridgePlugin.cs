@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using BepInEx;
+using HarmonyLib;
 using UnityEngine;
 using Splatform;
 
@@ -26,6 +27,16 @@ namespace ValheimLiveBridge
         void Awake()
         {
             Logger.LogInfo("Valheim Live Bridge v1.1.0 starting on http://127.0.0.1:" + Port + "/");
+            try
+            {
+                Harmony harmony = new Harmony("com.antigravity.valheimlivebridge");
+                harmony.PatchAll();
+                Logger.LogInfo("Valheim Live Bridge Harmony patches applied successfully.");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogWarning("Failed to apply Harmony patches: " + ex.Message);
+            }
             StartServer();
         }
 
@@ -111,6 +122,12 @@ namespace ValheimLiveBridge
                     if (Input.GetKeyDown(KeyCode.F10))
                     {
                         HarvestNearbyCrops("{\"radius\":15.0}");
+                    }
+
+                    // F11: Toggle One-Hit Kill (Enemies & Bosses)
+                    if (Input.GetKeyDown(KeyCode.F11))
+                    {
+                        ToggleOneHitKill();
                     }
 
                     // Interactive Blueprint Placement with 3D Hologram
@@ -271,6 +288,11 @@ namespace ValheimLiveBridge
                 {
                     string body = ReadRequestBody(request);
                     responseJson = RunOnMainThread(() => SetFlyMode(body));
+                }
+                else if (method == "POST" && rawUrl == "/api/set-one-hit-kill")
+                {
+                    string body = ReadRequestBody(request);
+                    responseJson = RunOnMainThread(() => SetOneHitKill(body));
                 }
                 else if (method == "POST" && rawUrl == "/api/apply-rested")
                 {
@@ -528,6 +550,7 @@ namespace ValheimLiveBridge
             sb.Append("\"godMode\":" + (isGod ? "true" : "false") + ",");
             sb.Append("\"ghostMode\":" + (isGhost ? "true" : "false") + ",");
             sb.Append("\"flyMode\":" + (isFly ? "true" : "false") + ",");
+            sb.Append("\"oneHitKill\":" + (OneHitKillEnabled ? "true" : "false") + ",");
             sb.Append("\"noPlacementCost\":" + (noPlacement ? "true" : "false") + ",");
             sb.Append("\"isRested\":" + (isRested ? "true" : "false") + ",");
             sb.Append("\"restedTime\":" + restedTime.ToString("F1") + ",");
@@ -1002,6 +1025,47 @@ namespace ValheimLiveBridge
             player.SetGodMode(target);
             player.Message(MessageHud.MessageType.Center, "Invincibility (God Mode): " + (target ? "ON" : "OFF"));
             return "{\"success\":true,\"godMode\":" + (target ? "true" : "false") + "}";
+        }
+
+        public static bool OneHitKillEnabled = false;
+
+        public static void ToggleOneHitKill()
+        {
+            Player player = Player.m_localPlayer;
+            OneHitKillEnabled = !OneHitKillEnabled;
+            if (player != null)
+            {
+                player.Message(MessageHud.MessageType.Center, "⚔ One-Hit Kill (Enemies): " + (OneHitKillEnabled ? "ON" : "OFF"));
+            }
+        }
+
+        private string SetOneHitKill(string json)
+        {
+            Player player = Player.m_localPlayer;
+            if (player == null)
+            {
+                return "{\"success\":false,\"error\":\"Player not in game\"}";
+            }
+
+            bool target = !OneHitKillEnabled;
+
+            if (!string.IsNullOrEmpty(json))
+            {
+                if (json.IndexOf("\"enabled\":true", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    json.IndexOf("\"enabled\": true", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    target = true;
+                }
+                else if (json.IndexOf("\"enabled\":false", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                         json.IndexOf("\"enabled\": false", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    target = false;
+                }
+            }
+
+            OneHitKillEnabled = target;
+            player.Message(MessageHud.MessageType.Center, "⚔ One-Hit Kill (Enemies): " + (target ? "ON" : "OFF"));
+            return "{\"success\":true,\"oneHitKill\":" + (target ? "true" : "false") + "}";
         }
 
         private static FieldInfo _noPlacementCostField;
@@ -4173,4 +4237,35 @@ namespace ValheimLiveBridge
             return s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "");
         }
     }
+
+    [HarmonyPatch(typeof(Character), "Damage")]
+    public static class Patch_Character_Damage
+    {
+        [HarmonyPrefix]
+        public static void Prefix(Character __instance, HitData hit)
+        {
+            try
+            {
+                if (!ValheimLiveBridgePlugin.OneHitKillEnabled || hit == null) return;
+
+                Player localPlayer = Player.m_localPlayer;
+                if (localPlayer == null) return;
+
+                if (__instance == null || __instance == localPlayer) return;
+
+                Character attacker = hit.GetAttacker();
+                bool isLocalAttacker = (attacker != null && attacker == localPlayer) ||
+                                       (hit.m_attacker != ZDOID.None && hit.m_attacker == localPlayer.GetZDOID());
+
+                if (isLocalAttacker)
+                {
+                    hit.m_damage.m_damage = 999999f;
+                    hit.m_dodgeable = false;
+                    hit.m_blockable = false;
+                }
+            }
+            catch { }
+        }
+    }
 }
+

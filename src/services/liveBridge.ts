@@ -12,6 +12,7 @@ export interface LiveGameStatus {
   maxHealth?: number;
   stamina?: number;
   godMode?: boolean;
+  oneHitKill?: boolean;
   ghostMode?: boolean;
   flyMode?: boolean;
   noPlacementCost?: boolean;
@@ -238,6 +239,19 @@ export async function setLiveGodMode(enabled?: boolean): Promise<{ success: bool
     return await res.json();
   } catch (e: any) {
     return { success: false, error: e.message || 'Failed to toggle invincibility' };
+  }
+}
+
+export async function setLiveOneHitKill(enabled?: boolean): Promise<{ success: boolean; oneHitKill?: boolean; error?: string }> {
+  try {
+    const res = await fetchBridge('set-one-hit-kill', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(enabled !== undefined ? { enabled } : {}),
+    });
+    return await res.json();
+  } catch (e: any) {
+    return { success: false, error: e.message || 'Failed to toggle one-hit kill' };
   }
 }
 

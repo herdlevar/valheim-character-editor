@@ -1,7 +1,7 @@
 import React from 'react';
 import { ValheimCharacter } from '../types';
 import { getItemByPrefab, getItemIconUrl } from '../data/items';
-import { Heart, Zap, Sparkles, Shield, Hammer, Clock, Award, Ghost, Flame, Compass, Plane, Sprout } from 'lucide-react';
+import { Heart, Zap, Sparkles, Shield, Hammer, Clock, Award, Ghost, Flame, Compass, Plane, Sprout, Swords } from 'lucide-react';
 
 interface CharacterOverviewProps {
   character: ValheimCharacter;
@@ -16,6 +16,8 @@ interface CharacterOverviewProps {
   onToggleGhostMode?: () => void;
   isFlyMode?: boolean;
   onToggleFlyMode?: () => void;
+  isOneHitKill?: boolean;
+  onToggleOneHitKill?: () => void;
   isRested?: boolean;
   restedTime?: number;
   onApplyRested?: () => void;
@@ -37,6 +39,8 @@ export const CharacterOverview: React.FC<CharacterOverviewProps> = ({
   onToggleGhostMode,
   isFlyMode,
   onToggleFlyMode,
+  isOneHitKill,
+  onToggleOneHitKill,
   isRested,
   restedTime,
   onApplyRested,
@@ -396,6 +400,51 @@ export const CharacterOverview: React.FC<CharacterOverviewProps> = ({
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                    </span>
+                  )}
+                </div>
+              </div>
+            </button>
+          )}
+
+          {/* One-Hit Kill (Enemies & Bosses) Toggle */}
+          {onToggleOneHitKill && (
+            <button
+              onClick={onToggleOneHitKill}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded border transition shadow active:scale-95 cursor-pointer ${
+                isOneHitKill
+                  ? 'bg-rose-950/80 border-rose-500 text-rose-200 shadow-[0_0_12px_rgba(244,63,94,0.35)]'
+                  : 'bg-valheim-dark/80 hover:bg-valheim-panel border-valheim-border/80 hover:border-valheim-brass text-gray-400 hover:text-gray-200'
+              }`}
+              title={
+                isOneHitKill
+                  ? 'One-Hit Kill is ON! [F11] in-game hotkey. All enemies & bosses die in 1 hit. Click to toggle OFF.'
+                  : 'One-Hit Kill is OFF. Click or press [F11] in-game to defeat enemies and bosses in 1 hit.'
+              }
+            >
+              <div
+                className={`w-7 h-7 rounded flex items-center justify-center border ${
+                  isOneHitKill
+                    ? 'bg-rose-900/80 border-rose-400 text-rose-300'
+                    : 'bg-gray-900 border-gray-700 text-gray-400'
+                }`}
+              >
+                <Swords className={`w-4 h-4 ${isOneHitKill ? 'text-rose-300 animate-pulse' : ''}`} />
+              </div>
+              <div className="text-left">
+                <div className="text-[10px] uppercase font-bold tracking-wider text-gray-400">
+                  1-Hit Kill [F11]
+                </div>
+                <div
+                  className={`text-xs font-bold font-valheim flex items-center gap-1.5 ${
+                    isOneHitKill ? 'text-rose-400' : 'text-gray-400'
+                  }`}
+                >
+                  <span>{isOneHitKill ? 'ACTIVE' : 'OFF'}</span>
+                  {isOneHitKill && (
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
                     </span>
                   )}
                 </div>

@@ -25,6 +25,7 @@ import {
   setLiveNoCostBuilding,
   setLiveGhostMode,
   setLiveFlyMode,
+  setLiveOneHitKill,
   applyLiveRested,
   teleportLive,
   spawnLiveItem,
@@ -44,6 +45,7 @@ export const App: React.FC = () => {
   const [isNoCostBuilding, setIsNoCostBuilding] = useState<boolean>(false);
   const [isGhostMode, setIsGhostMode] = useState<boolean>(false);
   const [isFlyMode, setIsFlyMode] = useState<boolean>(false);
+  const [isOneHitKill, setIsOneHitKill] = useState<boolean>(false);
   const [isRested, setIsRested] = useState<boolean>(false);
   const [restedTime, setRestedTime] = useState<number>(0);
   const [isWorldMapOpen, setIsWorldMapOpen] = useState<boolean>(false);
@@ -52,7 +54,7 @@ export const App: React.FC = () => {
   const [originalBackupBytes, setOriginalBackupBytes] = useState<Uint8Array | null>(null);
   const [originalFileName, setOriginalFileName] = useState<string>('character.fch');
 
-  // Sync godMode, noPlacementCost, ghostMode, flyMode & rested state whenever liveStatus is updated
+  // Sync godMode, noPlacementCost, ghostMode, flyMode, oneHitKill & rested state whenever liveStatus is updated
   useEffect(() => {
     if (liveStatus?.godMode !== undefined) {
       setIsGodMode(liveStatus.godMode);
@@ -65,6 +67,9 @@ export const App: React.FC = () => {
     }
     if (liveStatus?.flyMode !== undefined) {
       setIsFlyMode(liveStatus.flyMode);
+    }
+    if (liveStatus?.oneHitKill !== undefined) {
+      setIsOneHitKill(liveStatus.oneHitKill);
     }
     if (liveStatus?.isRested !== undefined) {
       setIsRested(liveStatus.isRested);
@@ -720,6 +725,31 @@ export const App: React.FC = () => {
     }
   };
 
+  // Toggle in-game One-Hit Kill (enemies & bosses)
+  const handleToggleOneHitKill = async () => {
+    if (!liveStatus?.inGame) {
+      showToast('One-Hit Kill requires an active in-game character connected via Live Bridge.', 'info');
+      return;
+    }
+    const targetState = !isOneHitKill;
+    setIsOneHitKill(targetState);
+    const res = await setLiveOneHitKill(targetState);
+    if (res.success) {
+      showToast(
+        targetState
+          ? '⚔ One-Hit Kill ACTIVATED! All enemies and bosses die in one hit. Press [F11] to toggle in-game.'
+          : '⚔ One-Hit Kill DEACTIVATED. Standard weapon damage restored.',
+        'success'
+      );
+      if (res.oneHitKill !== undefined) {
+        setIsOneHitKill(res.oneHitKill);
+      }
+    } else {
+      setIsOneHitKill(!targetState);
+      showToast(`Failed to toggle One-Hit Kill: ${res.error || 'Check game'}`, 'error');
+    }
+  };
+
   // Apply Instant Rested Buff (25 min - Comfort 18)
   const handleApplyRested = async () => {
     if (!liveStatus?.inGame) {
@@ -1225,6 +1255,8 @@ export const App: React.FC = () => {
         onToggleGhostMode={handleToggleGhostMode}
         isFlyMode={isFlyMode}
         onToggleFlyMode={handleToggleFlyMode}
+        isOneHitKill={isOneHitKill}
+        onToggleOneHitKill={handleToggleOneHitKill}
         onOpenWorldMap={() => setIsWorldMapOpen(true)}
         onOpenAutoBuilder={() => setIsAutoBuilderOpen(true)}
         onOpenGridPlanter={() => setIsGridPlanterOpen(true)}
@@ -1255,6 +1287,8 @@ export const App: React.FC = () => {
               onToggleGhostMode={handleToggleGhostMode}
               isFlyMode={isFlyMode}
               onToggleFlyMode={handleToggleFlyMode}
+              isOneHitKill={isOneHitKill}
+              onToggleOneHitKill={handleToggleOneHitKill}
               isRested={isRested}
               restedTime={restedTime}
               onApplyRested={handleApplyRested}

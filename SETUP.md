@@ -141,6 +141,7 @@ When the mod is running in your active world:
 | **`[F8]`** | **Undo Last Build** | Rolls back the last blueprint placement or crop grid. |
 | **`[F9]`** | **Toggle Fly (No-Clip)** | • **Space**: Ascend<br>• **Ctrl**: Descend<br>• **Shift**: Speed Boost<br>• **WASD**: Free movement |
 | **`[F10]`** | **Mass Harvest** | Gathers all ripe crops within 15 meters in a single click. |
+| **`[F11]`** | **Toggle One-Hit Kill** | Instantly defeats any enemy or boss with 1 hit. Trees and rocks are unaffected. |
 
 ---
 

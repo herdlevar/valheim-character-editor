@@ -38,6 +38,8 @@ interface HeaderBarProps {
   onToggleGhostMode?: () => void;
   isFlyMode?: boolean;
   onToggleFlyMode?: () => void;
+  isOneHitKill?: boolean;
+  onToggleOneHitKill?: () => void;
   onOpenWorldMap?: () => void;
   onOpenAutoBuilder?: () => void;
   onOpenGridPlanter?: () => void;
@@ -73,6 +75,8 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({
   onToggleGhostMode,
   isFlyMode,
   onToggleFlyMode,
+  isOneHitKill,
+  onToggleOneHitKill,
   onOpenWorldMap,
   onOpenAutoBuilder,
   onOpenGridPlanter,
@@ -356,6 +360,26 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({
             >
               <Plane className={`w-3.5 h-3.5 ${isFlyMode ? 'text-sky-300 animate-pulse' : 'text-gray-400'}`} />
               <span>{isFlyMode ? 'Fly (No-Clip): ON' : 'Fly (No-Clip) [F9]'}</span>
+            </button>
+          )}
+
+          {/* One-Hit Kill (Enemies & Bosses) Toggle */}
+          {liveStatus?.inGame && onToggleOneHitKill && (
+            <button
+              onClick={onToggleOneHitKill}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded text-xs font-valheim font-semibold transition shadow active:scale-95 cursor-pointer ${
+                isOneHitKill
+                  ? 'bg-rose-950/90 hover:bg-rose-900 border border-rose-500 text-rose-200 shadow-[0_0_12px_rgba(244,63,94,0.45)]'
+                  : 'bg-valheim-panel/80 hover:bg-valheim-slothover border border-valheim-border hover:border-valheim-brass text-gray-300'
+              }`}
+              title={
+                isOneHitKill
+                  ? 'One-Hit Kill is ON! [F11] in-game hotkey. All enemies & bosses die in one hit. Click to disable.'
+                  : 'One-Hit Kill is OFF. Click or press [F11] in-game to instantly defeat any enemy or boss with 1 hit.'
+              }
+            >
+              <Swords className={`w-3.5 h-3.5 ${isOneHitKill ? 'text-rose-400 animate-pulse' : 'text-gray-400'}`} />
+              <span>{isOneHitKill ? '1-Hit Kill: ON' : '1-Hit Kill [F11]'}</span>
             </button>
           )}
 

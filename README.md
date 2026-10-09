@@ -41,6 +41,7 @@
 - **Zero-Latency In-Game Engine**: Local high-speed HTTP bridge (`http://127.0.0.1:8765`) communicates directly with the Valheim game process.
 - **Real-Time Cheats**:
   - **Invincibility (God Mode)**: Complete immunity to damage.
+  - **One-Hit Kill**: Instantly defeat any enemy or boss with 1 hit (strictly restricted to enemies/bosses, leaving trees and rocks intact).
   - **Ghost Mode**: Enemies ignore player presence entirely.
   - **Fly Mode (No-Clip)**: Fly freely through terrain and dungeon walls.
   - **No-Cost Free Building**: Construct anything without materials.
@@ -83,6 +84,7 @@
 | **`[F8]`** | **Undo Last Build / Grid** | Instantly dismantles the last auto-built blueprint or planted crop grid. |
 | **`[F9]`** | **Toggle Fly Mode (No-Clip)** | Fly freely in any direction. `[Space]` = Ascend, `[Ctrl]` = Descend, `[Shift]` = Speed Boost. |
 | **`[F10]`** | **Harvest Nearby Crops (15m)** | Automatically gathers all ripe vegetables, grains, and herbs within 15 meters. |
+| **`[F11]`** | **Toggle One-Hit Kill** | Defeat any enemy or boss with a single strike. Trees, ores, and rocks remain completely unaffected. |
 
 ---
 

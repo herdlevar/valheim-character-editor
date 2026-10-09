@@ -33,6 +33,7 @@ $splat = "$managed\Splatform.dll"
 $sra = "$managed\SoftReferenceableAssets.dll"
 
 $bep = "$valheimDir\BepInEx\core\BepInEx.dll"
+$harmony = "$valheimDir\BepInEx\core\0Harmony.dll"
 if (-not (Test-Path $bep)) {
     Write-Error "BepInEx not found in $valheimDir\BepInEx\core\BepInEx.dll! Please ensure BepInEx is installed."
     exit 1
@@ -48,7 +49,7 @@ if (Test-Path $outputDll) {
 }
 
 Write-Host "Compiling ValheimLiveBridge.dll..."
-& $csc /target:library /out:$outputDll /r:$ns /r:$bep /r:$u1 /r:$u2 /r:$uImg /r:$uPhys /r:$uInput /r:$valheim /r:$utils /r:$splat /r:$sra $source
+& $csc /target:library /out:$outputDll /r:$ns /r:$bep /r:$harmony /r:$u1 /r:$u2 /r:$uImg /r:$uPhys /r:$uInput /r:$valheim /r:$utils /r:$splat /r:$sra $source
 
 if (Test-Path $outputDll) {
     Write-Host "SUCCESS: ValheimLiveBridge plugin compiled and installed to:"
